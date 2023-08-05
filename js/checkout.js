@@ -3,12 +3,12 @@ console.info('/js/checkout.js loaded');
 document.addEventListener('alpine:init', () => {
   Alpine.data('checkout', () => ({
     selectedTimeTxt: (localStorage.getItem('selectedTimeTxt') || '').split(','),
-    name : document.getElementById('name'),
-    email : document.getElementById('email'),
-    confirmEmail : document.getElementById('confirmEmail'),
-    gender : document.getElementById('gender'),
+    name: document.getElementById('name'),
+    email: document.getElementById('email'),
+    confirmEmail: document.getElementById('confirmEmail'),
+    gender: document.getElementById('gender'),
 
-    goToCheckout(){      
+    goToCheckout() {
       localStorage.setItem('name', this.name.value);
       localStorage.setItem('email', this.email.value);
       localStorage.setItem('gender', this.gender.value);
@@ -16,7 +16,7 @@ document.addEventListener('alpine:init', () => {
     }
 
 
-    }))
+  }))
 });
 
 const selectedDate = localStorage.getItem('selectedDate');
@@ -43,11 +43,11 @@ document.getElementById('total').innerHTML = total;
 var phoneInput = document.querySelector("#phone");
 var phone_input = intlTelInput(phoneInput);
 var phoneValtidity = phone_input.isValidNumber();
-  window.intlTelInput(phoneInput, {
-    preferredCountries: ["lk"],
-    nationalMode: false,
-    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
-  });
+window.intlTelInput(phoneInput, {
+  preferredCountries: ["lk"],
+  nationalMode: false,
+  utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js",
+});
 
 // Validations
 var email = document.getElementById('email');
@@ -61,11 +61,11 @@ document.getElementById('confirmEmail').addEventListener('focusout', function ()
 });
 
 document.getElementById('phone').addEventListener('focusout', function () {
-  if (phoneValtidity == false){
+  if (phoneValtidity == false) {
     alert("Invalid phone number");
     phoneInput.value = "";
   } else {
-      localStorage.setItem('phone', phone_input.getNumber(intlTelInputUtils.numberFormat.INTERNATIONAL));
+    localStorage.setItem('phone', phone_input.getNumber(intlTelInputUtils.numberFormat.INTERNATIONAL));
   }
 });
 

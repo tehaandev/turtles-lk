@@ -13,10 +13,10 @@ var picker = new Pikaday({
         dateString = `${day}-${month}-${year}`
         return dateString;
     },
-   
-    onSelect: function(date) {
+
+    onSelect: function (date) {
         format = 'Do MM YYYY',
-        field.value = picker.toString(date)
+            field.value = picker.toString(date)
         var selectedDate = field.value.toString(date, format)
         localStorage.setItem('selectedDate', selectedDate)
         document.getElementById('summary_date').innerHTML = selectedDate;
@@ -26,9 +26,9 @@ var picker = new Pikaday({
 
 document.addEventListener('alpine:init', () => {
     Alpine.data('ticket', () => ({
-        
+
         // Calculate method will be called when the user selects a time slot. 
-        calculate(){
+        calculate() {
             adult_LK_count = parseInt(this.adult_LK_count);
             child_LK_count = parseInt(this.child_LK_count);
             adult_FR_count = parseInt(this.adult_FR_count);
@@ -67,8 +67,8 @@ document.addEventListener('alpine:init', () => {
                     child_LK_total = child_LK_count * child_LK_price_peak;
                     adult_FR_total = adult_FR_count * adult_FR_price_peak;
                     child_FR_total = child_FR_count * child_FR_price_peak;
-                    peakCount++;                
-                } 
+                    peakCount++;
+                }
                 // Off Peak Hours
                 else {
                     total = (adult_LK_count * adult_LK_price_offPeak) + (child_LK_count * child_LK_price_offPeak) + (adult_FR_count * adult_FR_price_offPeak) + (child_FR_count * child_FR_price_offPeak) + (infant_count * infant_price_offPeak);
@@ -155,11 +155,11 @@ document.addEventListener('alpine:init', () => {
                         endTime = '6.00 PM';
                         break;
                 }
-                
+
             }
             // If the user has selected more than one time slot, the price will be calculated based on the number of peak and off peak hours selected. The number of peak and off peak hours are calculated using a FOR loop.
-            else if(this.selectedTime.length > 1) { 
-                
+            else if (this.selectedTime.length > 1) {
+
                 // add a for loop to calculate the number of peak and off peak hours
                 for (id in this.selectedTime) {
                     if (this.selectedTime[id] == 3 || this.selectedTime[id] == 4 || this.selectedTime[id] == 5 || this.selectedTime[id] == 8 || this.selectedTime[id] == 9 || this.selectedTime[id] == 10) {
@@ -168,7 +168,7 @@ document.addEventListener('alpine:init', () => {
                         offPeakCount++;
                     }
                 }
-                
+
                 // Calculation of total price for 1 peak hour and 1 off peak hour
                 var total_peak = (adult_LK_count * adult_LK_price_peak) + (child_LK_count * child_LK_price_peak) + (adult_FR_count * adult_FR_price_peak) + (child_FR_count * child_FR_price_peak) + (infant_count * infant_price_peak);
 
@@ -269,7 +269,7 @@ document.addEventListener('alpine:init', () => {
             localStorage.setItem('offPeakCount', offPeakCount)
             localStorage.setItem('peakCount', peakCount)
             localStorage.setItem('startTime', startTime)
-            localStorage.setItem('endTime', endTime)       
+            localStorage.setItem('endTime', endTime)
 
         },
     }))
@@ -329,5 +329,5 @@ document.addEventListener('alpine:init', () => {
             }
         ]
     })
-    
+
 });

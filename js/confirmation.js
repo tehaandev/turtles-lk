@@ -1,13 +1,13 @@
 console.info('/js/confirmation.js loaded');
 
 document.addEventListener('alpine:init', () => {
-    Alpine.data('confirmation', () => ({
-      selectedTimeTxt: (localStorage.getItem('selectedTimeTxt') || '').split(','),
-      goToWebsite() {
-        window.location.href = '/index.html';
-        localStorage.clear();
+  Alpine.data('confirmation', () => ({
+    selectedTimeTxt: (localStorage.getItem('selectedTimeTxt') || '').split(','),
+    goToWebsite() {
+      window.location.href = '/index.html';
+      localStorage.clear();
     }
-    }))
+  }))
 });
 
 const adult_LK_total = localStorage.getItem('adult_LK_total');

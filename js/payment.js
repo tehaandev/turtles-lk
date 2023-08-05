@@ -1,15 +1,15 @@
 console.info('/js/payment.js loaded');
 
 document.addEventListener('alpine:init', () => {
-    Alpine.data('payment', () => ({
-      selectedTimeTxt: (localStorage.getItem('selectedTimeTxt') || '').split(','),
-      goToConfirmation() {
-        localStorage.setItem('card', document.getElementById('card').value);
-        localStorage.setItem('expDate', document.getElementById('expDate').value);
-        localStorage.setItem('cvv', document.getElementById('cvv').value);
-        window.location.href = "/tickets/confirmation.html";
-      }
-    }))
+  Alpine.data('payment', () => ({
+    selectedTimeTxt: (localStorage.getItem('selectedTimeTxt') || '').split(','),
+    goToConfirmation() {
+      localStorage.setItem('card', document.getElementById('card').value);
+      localStorage.setItem('expDate', document.getElementById('expDate').value);
+      localStorage.setItem('cvv', document.getElementById('cvv').value);
+      window.location.href = "/tickets/confirmation.html";
+    }
+  }))
 });
 
 // Card number validation
@@ -20,7 +20,7 @@ card.addEventListener('input', function (e) {
   if (inputLength == 4 || inputLength == 9 || inputLength == 14) {
     e.target.value = input + " ";
   }
-  
+
   if (card.length > 19) {
     alert("Please enter a valid card number");
     document.getElementById('card').value = '';
@@ -34,7 +34,7 @@ card.addEventListener('focusout', function () {
   const card3 = cardArray[2];
   const card4 = cardArray[3];
 
-  if (card1.length != 4 || card2.length != 4 || card3.length != 4 || card4.length != 4) { 
+  if (card1.length != 4 || card2.length != 4 || card3.length != 4 || card4.length != 4) {
     alert("Please enter a valid card number");
     document.getElementById('card').value = '';
   }
