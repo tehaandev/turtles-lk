@@ -79,82 +79,6 @@ document.addEventListener('alpine:init', () => {
                     child_FR_total = child_FR_count * child_FR_price_offPeak;
                     offPeakCount++;
                 }
-                // Start time and end time
-                startTimeID = this.selectedTime[0];
-                endTimeID = parseInt(this.selectedTime[0]) + 1;
-                var startTime = '';
-                var endTime = '';
-                switch (parseInt(startTimeID)) {
-                    case 0:
-                        startTime = '7.00 AM';
-                        break;
-                    case 1:
-                        startTime = '8.00 AM';
-                        break;
-                    case 2:
-                        startTime = '9.00 AM';
-                        break;
-                    case 3:
-                        startTime = '10.00 AM';
-                        break;
-                    case 4:
-                        startTime = '11.00 AM';
-                        break;
-                    case 5:
-                        startTime = '12.00 PM';
-                        break;
-                    case 6:
-                        startTime = '1.00 PM';
-                        break;
-                    case 7:
-                        startTime = '2.00 PM';
-                        break;
-                    case 8:
-                        startTime = '3.00 PM';
-                        break;
-                    case 9:
-                        startTime = '4.00 PM';
-                        break;
-                    case 10:
-                        startTime = '5.00 PM';
-                        break;
-                }
-
-                switch (parseInt(endTimeID)) {
-                    case 0:
-                        endTime = '8.00 AM';
-                        break;
-                    case 1:
-                        endTime = '9.00 AM';
-                        break;
-                    case 2:
-                        endTime = '10.00 AM';
-                        break;
-                    case 3:
-                        endTime = '11.00 AM';
-                        break;
-                    case 4:
-                        endTime = '12.00 PM';
-                        break;
-                    case 5:
-                        endTime = '1.00 PM';
-                        break;
-                    case 6:
-                        endTime = '2.00 PM';
-                        break;
-                    case 7:
-                        endTime = '3.00 PM';
-                        break;
-                    case 8:
-                        endTime = '4.00 PM';
-                        break;
-                    case 9:
-                        endTime = '5.00 PM';
-                        break;
-                    case 10:
-                        endTime = '6.00 PM';
-                        break;
-                }
 
             }
             // If the user has selected more than one time slot, the price will be calculated based on the number of peak and off peak hours selected. The number of peak and off peak hours are calculated using a FOR loop.
@@ -261,6 +185,84 @@ document.addEventListener('alpine:init', () => {
                 }
 
             }
+
+            // Start time and end time
+            startTimeID = this.selectedTime[0];
+            endTimeID = parseInt(this.selectedTime[0]) + 1;
+            var startTime = '';
+            var endTime = '';
+            switch (parseInt(startTimeID)) {
+                case 0:
+                    startTime = '7.00 AM';
+                    break;
+                case 1:
+                    startTime = '8.00 AM';
+                    break;
+                case 2:
+                    startTime = '9.00 AM';
+                    break;
+                case 3:
+                    startTime = '10.00 AM';
+                    break;
+                case 4:
+                    startTime = '11.00 AM';
+                    break;
+                case 5:
+                    startTime = '12.00 PM';
+                    break;
+                case 6:
+                    startTime = '1.00 PM';
+                    break;
+                case 7:
+                    startTime = '2.00 PM';
+                    break;
+                case 8:
+                    startTime = '3.00 PM';
+                    break;
+                case 9:
+                    startTime = '4.00 PM';
+                    break;
+                case 10:
+                    startTime = '5.00 PM';
+                    break;
+            }
+
+            switch (parseInt(endTimeID)) {
+                case 0:
+                    endTime = '8.00 AM';
+                    break;
+                case 1:
+                    endTime = '9.00 AM';
+                    break;
+                case 2:
+                    endTime = '10.00 AM';
+                    break;
+                case 3:
+                    endTime = '11.00 AM';
+                    break;
+                case 4:
+                    endTime = '12.00 PM';
+                    break;
+                case 5:
+                    endTime = '1.00 PM';
+                    break;
+                case 6:
+                    endTime = '2.00 PM';
+                    break;
+                case 7:
+                    endTime = '3.00 PM';
+                    break;
+                case 8:
+                    endTime = '4.00 PM';
+                    break;
+                case 9:
+                    endTime = '5.00 PM';
+                    break;
+                case 10:
+                    endTime = '6.00 PM';
+                    break;
+            }
+
             localStorage.setItem('total', total)
             localStorage.setItem('adult_LK_total', adult_LK_total)
             localStorage.setItem('child_LK_total', child_LK_total)
