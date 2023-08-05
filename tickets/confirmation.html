@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Book Tickets</title>
+        
+        <link rel="shortcut icon" href="media/icon.webp" type="image/x-icon">
+        <script src="https://unpkg.com/alpinejs" defer></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+        <script src="https://cdnjs.com/libraries/moment.js"></script>
+        <link rel="stylesheet" href="/CSS/ticketStyle.css">
+    </head>
+
+    <body>
+        <div
+        class='custom-bg flex items-center justify-center min-h-screen z-10' 
+        x-data="confirmation">
+            <div
+            class="w-max max-w-5xl px-10 py-8 mx-auto bg-white shadow-xl"
+            x-data="{
+                offPeakCount: 0,
+                peakCount: 0,
+                }">
+                <header class="text-center text-xl p-2 mb-8">
+                    <h3 class="max-w-xl">
+                        Thank you for your order. Your order has been confirmed with us. You can show this confirmation at the entrance. Following is the summary of your order.
+                    </h3>
+                </header>
+                <div>
+                    <!-- Summary Table -->
+                    <div
+                    class="flex justify-center">
+                        <table
+                        class="border-2 table-fixed w-auto min-w-fit">
+                            <tr>
+                                <td class="font-bold border-2 px-2 py-2">Name</td>
+                                <td class="border-2 px-2 py-2 text-center" colspan="2">
+                                    <span id="name" ></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold border-2 px-2 py-2">Email</td>
+                                <td class="border-2 px-2 py-2 text-center" colspan="2">
+                                    <span id="email" ></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold border-2 px-2 py-2">Phone</td>
+                                <td class="border-2 px-2 py-2 text-center" colspan="2">
+                                    <span id="phone" ></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold border-2 px-2 py-2">Date</td>
+                                <td colspan="2" class="border-2 px-2 py-2 text-center">
+                                    <span id="summary_date">DD-MM-YYYY</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold border-2 px-2 py-2">Time</td>
+                                <td colspan="2" class="border-2 px-2 py-2 text-center">
+                                    From <span id="startTime">HH:MM</span>
+                                    to <span id="endTime">HH:MM</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold border-2 px-2 py-2">Duration</td>
+                                <td class="px-2 text-center py-2">
+                                    <span id="totalCount"></span> Hr(s)
+                                </td>
+                                <td class="px-2 py-2">
+                                    Peak: <span id="peakCount"></span><br>
+                                    Off-Peak: <span id="offPeakCount"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                               <td class="font-bold border-2 px-2 py-2">Categories</td> 
+                               <td class=" text-center font-bold border-2 px-2 py-2" colspan="2">Charges (USD)</td>
+                            </tr>
+                            <tr>
+                                <td class="border-2 px-2 py-2">Adult (Resident)</td>
+                                <td class="border-2 px-2 py-2 text-center">
+                                    <span id="adult_LK_count" x-text="adult_LK_count"></span>
+                                </td>
+                                <td class="border-2 px-2 py-2 text-center">
+                                    <span id="adult_LK_total" x-text="adult_LK_total"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border-2 px-2 py-2">Child (Resident)</td>
+                                <td class="border-2 px-2 py-2 text-center">
+                                    <span id="child_LK_count" x-text="child_LK_count"></span>
+                                </td>
+                                <td class="border-2 px-2 py-2 text-center">
+                                    <span id="child_LK_total" x-text="child_LK_total"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border-2 px-2 py-2">Adult (Foreign)</td>
+                                <td class="border-2 px-2 py-2 text-center">
+                                    <span id="adult_FR_count" x-text="adult_FR_count"></span>
+                                </td>
+                                <td class="border-2 px-2 py-2 text-center">
+                                    <span id="adult_FR_total" x-text="adult_FR_total"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border-2 px-2 py-2">Child (Foreign)</td>
+                                <td class="border-2 px-2 py-2 text-center">
+                                    <span id="child_FR_count" x-text="child_FR_count"></span>
+                                </td>
+                                <td class="border-2 px-2 py-2 text-center">
+                                    <span id="child_FR_total" x-text="child_FR_total"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border-2 px-2 py-2">Infant</td>
+                                <td class="border-2 px-2 py-2  text-center">
+                                    <span id="infant_count" x-text="infant_count"></span>
+                                </td>
+                                <td class="border-2 px-2 py-2 text-center">
+                                    FREE
+                                </td>
+                            </tr>
+                            
+                            <tr class="bg-slate-100">
+                                <td class="font-bold border-2 px-2 py-2" colspan="2">Total</td>
+                                <td class="border-2 px-2 py-2 text-center text-xl font-medium ">
+                                    $<span id="total" x-text="total"></span>
+                                </td>
+                            </tr> 
+                        </table>
+                    </div>
+                    <div class="flex justify-center">
+                        <button 
+                        class="max-w-lg w-44 py-3 mt-8 font-medium tracking-widest text-white uppercase bg-sky-500 shadow-lg focus:outline-none hover:bg-sky-600 hover:shadow-none duration-200"
+                        type="button"
+                        id="nextBtn"
+                        x-on:click="goToWebsite()">
+                            back to website
+                        </button> 
+                    </div>
+
+                </div>
+                
+                
+        </div>
+        <script src="/js/confirmation.js"></script>
+    </body>
+</html>
