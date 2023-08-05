@@ -1,0 +1,150 @@
+body {
+    background: scroll linear-gradient(#d5edff, #FFFFFF);
+    background-size: 300% 300%;
+    min-height: 100vh;
+    max-width: 100%;
+    animation: color 7s ease-in-out infinite;
+    font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+    color: #232528;
+    border-top:#FFA400 solid 5px;
+}
+@keyframes color {
+    0% {
+        background-position: 50% 0;
+    }
+    50% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 50% 0;
+    }
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+div.title-logo{
+    align-items: center;
+    display: flex;
+}
+.logo {
+    display: block;
+    align-self: center;
+    width: 35px;
+    height: 35px;
+    margin-left: 0;
+}
+a.site-name{ 
+    margin: 0 20px;
+    display: block;
+    padding: 0;
+    font-family: papyrus, fantasy;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 1000;
+    transition: 0.2s;
+}
+p.tagline{
+    font-family: URW Chancery L, cursive;
+    font-size: 0.74em;
+}
+a.site-name:hover{
+    scale: 110%;
+    transition: 0.2s;
+}
+/* Start Main NavBar CSS ------ */
+.nav-header{
+    margin: 0;
+}
+.mainNav {
+    display: flex;
+    background-color: #0047ab; 
+    color: #fff;
+    justify-content: space-between;
+    padding: 0 15px;
+    height: 65px;
+    line-height: 65px;  
+}
+.mainNav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.mainNav ul li {
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    padding: 0 15px;
+    transition: 0.4s;  
+    text-align: center; 
+    font-size: 15px;
+}
+.mainNav ul a {
+    text-decoration: none;
+    color: #EAF6FF;
+    line-height: 65px;
+    font-weight: 500;
+
+}
+.mainNav ul li .dropdown{
+    width: 100%;
+    background: #03045E;
+    position:relative;
+    z-index: 999;
+    display: none;
+}
+.mainNav ul li .dropdown a{
+    display: block;
+    padding: 0;
+}
+.mainNav ul li.active,
+.mainNav ul li:hover {
+    background: #3195ff;
+    transition: 0.4s ease-in-out;
+}
+.mainNav ul li:hover ul.dropdown{
+    display: block;
+    
+}
+.mainNav .navBar-toggle{
+    display: none;
+    height: min-content;
+    margin: 16px 0 0 0;
+    cursor: pointer;
+    align-items: center;
+}
+.mainNav .navBar-toggle .bar{
+    width: 40px;
+    height: 4px;
+    margin-bottom: 9px;
+    border-radius: 3px;
+    background-color: white;
+    transition: .4s;
+}
+input#toggle{
+    display: none;
+}
+input:checked ~ .mainNav ul{
+    transform: translateY(0);
+    z-index: 0;
+}
+input:checked ~ .mainNav .navBar-toggle{
+    margin: 37px 37px 0 0 ;
+    z-index: 1;
+}
+input:checked ~ .mainNav .navBar-toggle .bar:nth-child(1){
+
+    position: absolute;
+    transform: rotate(45deg);
+}
+input:checked ~ .mainNav .navBar-toggle .bar:nth-child(2){
+    display: none;
+}
+input:checked ~ .mainNav .navBar-toggle .bar:nth-child(3){
+    position: absolute;
+    transform: rotate(-45deg);
+}
+/*End Main NavBar CSS*/

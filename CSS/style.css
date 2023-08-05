@@ -1,0 +1,668 @@
+body {
+    background: scroll linear-gradient(#bae2ff, #EAF6FF);
+    background-size: 300% 300%;
+    min-height: 100vh;
+    max-width: 100%;
+    animation: color 7s ease-in-out infinite;
+    font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+    text-align: justify;
+    color: #232528;
+    font-size: 1.1em;
+    margin: 0;
+    border-top:#FFA400 solid 5px;
+}
+@keyframes color {
+    0% {
+        background-position: 50% 0;
+    }
+    50% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 50% 0;
+    }
+}
+h1 {
+    color: #03045E;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+div.title-logo{
+    align-items: center;
+    display: flex;
+}
+.logo {
+    display: block;
+    align-self: center;
+    width: 35px;
+    height: 35px;
+    margin-left: 0;
+}
+a.site-name{ 
+    margin: 0 20px;
+    display: block;
+    padding: 0;
+    font-family: papyrus, fantasy;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 1000;
+    transition: 0.2s;
+}
+p.tagline{
+    font-family: URW Chancery L, cursive;
+    font-size: 0.74em;
+}
+a.site-name:hover{
+    scale: 110%;
+    transition: 0.2s;
+}
+/* Start Main NavBar CSS ------ */
+.nav-header{
+    margin: 0;
+}
+.mainNav {
+    display: flex;
+    background-color: #0047ab; 
+    color: #fff;
+    justify-content: space-between;
+    padding: 0 15px;
+    height: 65px;
+    line-height: 65px;  
+}
+.mainNav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.mainNav ul li {
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    padding: 0 15px;
+    transition: 0.4s;  
+    text-align: center; 
+    font-size: 15px;
+}
+.mainNav ul a {
+    text-decoration: none;
+    color: #EAF6FF;
+    line-height: 65px;
+    font-weight: 500;
+
+}
+.mainNav ul li .dropdown{
+    width: 100%;
+    background: #03045E;
+    position:relative;
+    z-index: 999;
+    display: none;
+}
+.mainNav ul li .dropdown a{
+    display: block;
+    padding: 0;
+}
+.mainNav ul li.active,
+.mainNav ul li:hover {
+    background: #3195ff;
+    transition: 0.4s ease-in-out;
+}
+.mainNav ul li:hover ul.dropdown{
+    display: block;
+    
+}
+.mainNav .navBar-toggle{
+    display: none;
+    height: min-content;
+    margin: 16px 0 0 0;
+    cursor: pointer;
+    align-items: center;
+}
+.mainNav .navBar-toggle .bar{
+    width: 40px;
+    height: 4px;
+    margin-bottom: 9px;
+    border-radius: 3px;
+    background-color: white;
+    transition: .4s;
+}
+input#toggle{
+    display: none;
+}
+input:checked ~ .mainNav ul{
+    transform: translateY(0);
+    z-index: 0;
+}
+input:checked ~ .mainNav .navBar-toggle{
+    margin: 37px 37px 0 0 ;
+    z-index: 1;
+}
+input:checked ~ .mainNav .navBar-toggle .bar:nth-child(1){
+
+    position: absolute;
+    transform: rotate(45deg);
+}
+input:checked ~ .mainNav .navBar-toggle .bar:nth-child(2){
+    display: none;
+}
+input:checked ~ .mainNav .navBar-toggle .bar:nth-child(3){
+    position: absolute;
+    transform: rotate(-45deg);
+}
+/*End Main NavBar CSS*/
+/*Start Homepage grid*/
+.secondary-content {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+    justify-content: center;
+    margin: 6vh 0 6vh 0;
+}  
+.grid-image {
+    width: 20vw;
+    margin: 5px;
+    transition: 250ms ease-in-out;
+}  
+.grid-image:hover {
+    scale: 1.03;
+    transition: 250ms ease-in-out;
+    box-shadow: 0px 3px 5px #232528 ;
+}
+/*End Homepage grid*/
+/*Start Content*/
+.page-header {
+    text-align: center;
+    margin: 8vh 0;
+    margin-left: 0;
+    margin-right: 0;
+}  
+.dropcap{
+    float: left;
+    font-size: 2.359em;
+    line-height: 40px;
+    padding: 0px 1px 0 0px;
+}   
+.intro-para {
+    margin: 0 10vw 3vh 10vw;
+    max-width: 1500px;
+    justify-content: center;
+}    
+#explore-button {
+    width: 120px;
+    height: 41px;
+}    
+#explore-button:hover {
+    font-size: inherit;
+}
+.threat-page h3 {
+    text-align: center;
+    margin-top: 10px;
+}
+.entry-content {
+    margin: 0 10vw 10vh 10vw;
+}   
+.entry-content h2 {
+    margin-bottom: 4vh;
+    font-variant: small-caps;
+}
+.category-title {
+    margin: 0;
+    padding: 0
+}
+.scientific-name {
+    margin-top :-20px;
+    padding-bottom: 3vh;
+    font-style: italic;
+}
+.category {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10vh;
+}
+.category img {
+    display: inline-block;
+    height: auto;
+    width: 27vw;
+    max-height: auto;
+    transition: 250ms ease-in-out;
+}
+.category img:hover {
+    scale: 1.03;
+    transition: 120ms ease-in-out;
+    box-shadow: 0px 3px 5px #232528;
+    transition: 250ms ease-in-out;
+}
+.category p {
+    display: inline-block;
+    padding-left: 40px;
+}
+.summary h2{
+    text-align: center;
+}
+th{
+    font-size: 1.1em;
+}
+th, td{
+    text-align: center;
+    border: #03045E solid 1px;
+    padding: 6px 20px;
+    max-width: 150px;
+}
+#category-table{
+    width: max-content;
+}
+tfoot tr, tfoot td{
+    font-size: 0.85em;
+    border: none;
+}
+#category-table th {
+    font-variant: small-caps;
+}
+img.map{
+    margin-top: 2vh;
+    height: auto;
+    width: 300px;
+}
+img.map:hover{
+    scale: 1;
+    cursor: pointer;
+}
+.threat-info h2{
+    text-align: center;
+}
+.threat-page hr{
+    width: 70% auto;
+    height: 1px;
+}
+.hatchery-page{
+    display: inline-flex;
+    flex-direction: row;
+    align-items:center;
+}
+img.hatchery-page-banner{
+    width: 500px;
+    height: auto;
+    display: block;
+    padding-bottom: 60px ;
+}
+.map{
+    padding: 5px;
+    transition: 250ms ease-in-out;
+}
+.map:hover{
+    scale: 1.05;
+    transition: 250ms ease-in-out;
+}
+.hatchery-page-intro{
+    display: inline-block;
+    padding-right: 40px;
+}
+p.source{
+    font-size: 11.56px;
+}
+.bold{
+    font-weight: bold;
+    text-align: center;
+}
+#products {
+    border: #03045E double 1px;
+    margin: 50px;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    grid-template-rows: repeat(3, auto);
+    justify-content: center;
+    
+}
+.single-item{
+    text-align: center;
+    transition: 150ms ease-in-out;
+}
+.single-item img:hover{
+    scale: 1.03;
+    transition: 150ms ease-in-out;
+}
+.single-item img{
+    height: auto;
+    width: 250px;
+    padding: 20px;
+}
+p.product-info{
+    margin: 3px;
+}
+button.buy{
+    padding: 0 10px;
+    width: auto;
+}
+#form-header{
+    margin-top: 50px;
+    text-align: center
+}
+form{
+    text-align: center;
+    display:block;
+}
+input{
+    margin-top: 2vh;
+    border-radius: 3px;
+    height: 17px;
+    border: #03045E solid 2px;
+}
+.preference{
+    margin: 1px;
+}
+#submit{
+    margin-top: 3vh;
+    background-color: #03045E;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 3px;
+    width: auto;
+    padding: 0 10px;
+    height: 35px;
+    transition:100ms ease-in-out;
+}
+#submit:hover{
+    font-size: 1.1em;
+    transition:100ms ease-in-out;
+}
+.text-align-center{
+    text-align: center;
+}
+button{
+    background-color: #03045E;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 3px;
+    width: auto;
+    height: 41px;
+    transition:130ms ease-in-out;
+    margin-top: 3vh;
+}
+button a{
+    color: #fff;
+    text-decoration: none;
+}    
+
+/*End Content*/
+/*Start Footer*/
+hr {
+    background-color: #03045E;
+    height: 3px;
+    width: 85%;
+    border: none;
+    margin-top: 7vh;
+    margin-bottom: 7vh;
+}
+img.top-button{
+    height: 5vh;
+    width: auto;
+    margin-left: 85%;
+    transition: 150ms ease-in-out;
+}
+img.top-button:hover {
+    scale: 1.07;
+    transition: 150ms ease-in-out;
+}
+.footer {
+    margin: 5vh 8vw;
+}
+.footer-header, .footer-content {
+    display: flex;
+}
+.footer-header-1{
+    display: block;
+}
+.footer-content-1 {
+    display: block;
+    width: 50%;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+.footer-content-1 a{
+    color: #03045E;
+    text-decoration: none;
+}
+.social-icons{
+    display: block;   
+}
+.social-icons img {
+    display: inline;
+    width: 35px;
+    height: auto;
+    margin: 0 5px 0;
+    transition: 0.2s ease-in-out;
+}
+.social-icons img:hover {
+    scale: 0.9;
+    transition: 0.2s ease-in-out;
+}
+/*End Footer*/
+
+/*
+STYLING FOR SMALLER LAPTOPS/ TABLETS
+DISPLAY WIDTH <= 1366px
+*/
+@media (max-width: 1366px){
+    a.site-name{
+        padding: 0;
+    }
+/*Start Main Nav - Responsive*/
+    .mainNav {
+        padding: 0 2rem;
+    }
+    .mainNav ul {
+        display: grid;
+        position: absolute;
+        background-color: #0047ab;
+        text-align: center;
+        opacity: 0.93; 
+        width:100%;
+        top: 65px;
+        left: 0;
+        transform: translateY(-100%);
+        z-index: -1;
+        transition: 0.5s;
+    }
+    .mainNav ul li .dropdown{
+        position:sticky;
+        z-index: 999;
+        display: none;  
+        transition: 0.4s;
+    }
+    .mainNav ul li .dropdown a{
+        line-height: 65px;
+        display: block;
+        transition: 1s;
+    }
+    .mainNav ul li:hover .dropdown{
+        background-color: #03045E;
+        display:block;
+        width: 100% !important;
+        line-height: 65px;
+        
+    }
+/*End Main Nav - Responsive*/
+/*Start Body - Responsive*/
+    .intro-para {
+        margin: 0 3vw 3vh 3vw;
+        max-width: 1000px;
+        justify-content: center;
+    } 
+    .mainNav ul li {
+        padding: 0;
+    }
+    .mainNav .navBar-toggle{
+        display: grid !important;
+    }
+    .entry-content {
+        margin: 0 10% 10vh 10%;
+    }
+
+    .hatchery-page{
+        display: block;
+    }
+    .hatchery-page .grid-image{
+        width: 250px;
+    }
+/*End Body - Responsive*/
+
+    img.grid-image {
+        width: 270px;
+        margin: 3vh 10px;
+        transition: 250ms ease-in-out;
+    }  
+    .footer {
+        margin: 3vh 8vw;
+    }
+    .footer-header, .footer-content {
+        display: block;
+    }
+    .footer-header-1{
+        display: block;
+    }
+    .footer-content-1 {
+        display: block;
+        width: 90%;
+        margin-bottom: 50px;
+    }
+    .scientific-name {
+        margin-top :-30px;
+    }
+    .category {
+        display: block;
+        width: 600px;
+        margin:0 10% 10% 10%;
+    }
+    .category img {
+        display: block;
+        margin: 0 50px;
+        height: auto;
+        width: 400px;
+        max-height: auto;
+        transition: 250ms ease-in-out;
+    }
+    .category p {
+        display:block;
+        padding: 0;
+        max-width: 500px;
+    }
+    #category-table{
+        width: 500px;
+    }
+    th, td{
+        padding: 5px 5px;
+        max-width: 150px;
+    }
+    #products {
+        border: #03045E double 1px;
+        margin: 0;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+        grid-template-rows: repeat(2, auto);
+        justify-content: center;
+        
+    }
+    .single-item img{
+        height: auto;
+        width: 30vw;
+        padding: 20px;
+    }
+}
+
+
+/*
+STYLING FOR PHONES
+DISPLAY WIDTH <= 600PX
+*/
+@media (max-width: 600px){
+    p.tagline{
+        display: none;
+    }
+    .secondary-content{
+        display: inline-block;
+        margin: 0 5%;
+    }
+    img.grid-image {
+        display: block;
+        width: 100%;
+        margin: 3vh 0;
+        transition: 250ms ease-in-out;
+    }  
+    #category-table{
+        display: none;
+    }
+    .category {
+        display: block;
+        width: 100%;
+        margin:0;
+    }
+    .category img {
+        display: block;
+        margin: 0 5vw;
+        height: auto;
+        width: 70vw;
+        max-height: auto;
+        transition: 250ms ease-in-out;
+    }
+    .category p {
+        display:block;
+        padding: 0;
+        width: 80vw;
+        margin-bottom: 50px;
+    }
+    .hatchery-page-intro{
+        width: 80vw;
+    }
+    .hatchery-page{
+        display: block;
+    }
+    .hatchery-page .grid-image, .map{
+        width: 70vw;
+    }
+    .map{
+        height: auto;
+        margin-bottom: 30px;
+    }
+    h1.page-header{
+        width:88vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+    .sub-hatchery {
+        width: 70vw;
+        margin: 0 15vw ;
+    }
+    img.hatchery-page-banner{
+        width: 90%;
+        height: auto;
+    }
+    #products {
+        border: #03045E double 1px;
+        margin: 0;
+        padding: 10px;
+        display: block;
+        justify-content: center;
+        
+    }
+    .single-item img{
+        height: auto;
+        width: 60vw;
+        padding: 20px;
+    }
+    form{
+        text-align: center;
+        display:block;
+    }
+    input{
+        margin: 5px 10px 15px;
+        border-radius: 3px;
+        height: 17px;
+        border: #03045E solid 2px;
+    }
+}

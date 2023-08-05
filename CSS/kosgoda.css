@@ -1,0 +1,417 @@
+body {
+    background: #fff;
+    background-size: 300% 300%;
+    min-height: 100vh;
+    max-width: 100%;
+    animation: color 13s ease-in-out infinite;
+    font-family: Tahoma,sans-serif;
+    text-align: justify;
+    color: #0a2351;
+    font-size: 1em;
+    margin: 0;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+div.title-logo{
+    align-items: center;
+    display: flex;
+}
+.logo {
+    display: block;
+    align-self: center;
+    width: 35px;
+    height: 35px;
+    margin-left: 0;
+}
+a.site-name{ 
+    margin: 0 20px;
+    display: block;
+    padding: 0;
+    font-family: papyrus, fantasy;
+    color: #002D62;
+    text-decoration: none;
+    font-weight: 1000;
+    transition: 0.2s;
+}
+a.site-name:hover{
+    scale: 110%;
+    transition: 0.2s;
+}
+p.tagline{
+    font-family: URW Chancery L, cursive;
+    font-size: 0.74em;
+}
+/* Start Main NavBar CSS ------ */
+.nav-header{
+    margin: 0;
+}
+.mainNav {
+    display: flex;
+    background-color: #fff;
+    background-size: 300% 300%;
+    color: #232528;
+    justify-content: space-between;
+    padding: 0 15px;
+    height: 65px;
+    line-height: 65px;
+    box-shadow: 0px 0px 5px #232528;
+}
+.mainNav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.mainNav ul li {
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    padding: 0 15px;
+    transition: 0.4s;  
+    text-align: center; 
+    font-size: 15px;
+}
+
+.mainNav ul a {
+    text-decoration: none;
+    color: #002D62;
+    line-height: 65px;
+    font-weight: 500;
+}
+.mainNav ul li .dropdown{
+    width: 100%;
+    background: #fff;
+    color: #002D62;
+    position:relative;
+    z-index: 999;
+    display: none;
+    box-shadow: 0px 3px 5px #232528 ;
+}
+.mainNav ul li .dropdown a li{
+    display: block;
+    padding: 0;
+    color: #002D62;
+}
+.mainNav ul li.active a{
+    color: #fff;
+}
+.mainNav ul li.active,
+.mainNav ul a:hover{
+    color: #fff;
+    background: #002D62;
+    transition: 0.4s ease-in-out;
+}
+.mainNav ul li .dropdown a li:hover,
+.mainNav ul li .dropdown a li.active{
+    color: #fff;
+    background: #002D62;
+    transition: 0.4s;
+}
+.mainNav ul li:hover ul.dropdown{
+    display: block;
+}
+.mainNav .navBar-toggle{
+    display: none;
+    height: min-content;
+    margin: 16px 0 0 0;
+    cursor: pointer;
+    align-items: center;
+}
+.mainNav .navBar-toggle .bar{
+    width: 40px;
+    height: 4px;
+    margin-bottom: 9px;
+    border-radius: 3px;
+    background-color: #002D62;
+    transition: .4s;
+}
+input#toggle{
+    display: none;
+}
+input:checked ~ .mainNav ul{
+    transform: translateY(0);
+    z-index: 0;
+}
+input:checked ~ .mainNav .navBar-toggle{
+    margin: 37px 37px 0 0 ;
+    z-index: 1;
+}
+input:checked ~ .mainNav .navBar-toggle .bar:nth-child(1){
+
+    position: absolute;
+    transform: rotate(45deg);
+}
+input:checked ~ .mainNav .navBar-toggle .bar:nth-child(2){
+    display: none;
+}
+input:checked ~ .mainNav .navBar-toggle .bar:nth-child(3){
+    position: absolute;
+    transform: rotate(-45deg);
+}
+/*End Main NavBar CSS*/
+/*Start Homepage grid*/
+.secondary-content {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+    justify-content: center;
+    margin: 6vh 0 6vh 0;
+}  
+.grid-image {
+    width: 20vw;
+    margin: 5px;
+    transition: 250ms ease-in-out;
+}  
+.grid-image:hover {
+    scale: 1.03;
+    transition: 250ms ease-in-out;
+    box-shadow: 0px 3px 5px #232528 ;
+}
+/*End Homepage grid*/
+/*Start Content*/
+.page-header {
+    text-align: center;
+    margin: 8vh 0;
+    margin-left: 0;
+    margin-right: 0;
+}     
+.intro-para {
+    margin: 0 10vw 3vh 10vw;
+    max-width: 1500px;
+    justify-content: center;
+}    
+.entry-content {
+    margin: 0 10vw 10vh 10vw;
+}   
+.entry-content h2 {
+    margin-bottom: 4vh;
+    font-variant: small-caps;
+}
+.summary h2{
+    text-align: center;
+}
+.hatchery-page{
+    display: inline-flex;
+    flex-direction: row;
+    align-items:center;
+}
+img.hatchery-page-banner{
+    width: 500px;
+    height: auto;
+    display: block;
+    padding-bottom: 60px ;
+}
+.bold{
+    font-weight: bold;
+    text-align: center;
+}
+.text-align-center{
+    text-align: center;
+}
+button{
+    background-color: #03045E;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 3px;
+    width: 240px;
+    height: 41px;
+    transition:130ms ease-in-out;
+    margin-top: 3vh;
+}
+button a{
+    color: #fff;
+    text-decoration: none;
+}    
+button:hover{
+    font-size: 1.1em;
+    transition:100ms ease-in-out;
+}
+/*End Content*/
+/*Start Footer*/
+hr {
+    background-color: #FFA400;
+    height: 3px;
+    width: 85%;
+    border: none;
+    margin-top: 7vh;
+    margin-bottom: 7vh;
+}
+.footer {
+    margin: 5vh 8vw;
+    text-decoration: none;
+}
+.footer-header, .footer-content {
+    display: flex;
+}
+.footer-header-1{
+    display: block;
+}
+.footer-content-1 {
+    display: block;
+    width: 50%;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+.footer-content-1 a{
+    text-decoration: none;
+}
+.social-icons{
+    display: block;   
+}
+.social-icons img {
+    display: inline;
+    width: 35px;
+    height: auto;
+    margin: 0 5px 0;
+    transition: 0.2s ease-in-out;
+}
+.social-icons img:hover {
+    scale: 0.9;
+    transition: 0.2s ease-in-out;
+}
+/*End Footer*/
+
+/*
+STYLING FOR SMALLER LAPTOPS/ TABLETS
+DISPLAY WIDTH <= 1270px
+*/
+@media (max-width: 1366px){
+    a.site-name{
+        padding: 0;
+    }
+/*Start Main Nav - Responsive*/
+  .mainNav {
+    padding: 0 2rem;
+}
+.mainNav ul {
+    display: grid;
+    position: absolute;
+    background-color: #fff;
+    text-align: center; 
+    width:100%;
+    top: 65px;
+    left: 0;
+    transform: translateY(-100%);
+    z-index: -1;
+    transition: 0.5s;
+}
+.mainNav ul li .dropdown{
+    position:sticky;
+    z-index: 999;
+    display: none;  
+    transition: 0.4s;
+}
+.mainNav ul li .dropdown a{
+    line-height: 65px;
+    display: block;
+    transition: 1s;
+}
+.mainNav ul li:hover .dropdown{
+    box-shadow: none;
+    display:block;
+    width: 100% !important;
+    line-height: 65px;
+    
+}
+/*End Main Nav - Responsive*/
+/*Start Body - Responsive*/
+    .intro-para {
+        margin: 0 3vw 3vh 3vw;
+        max-width: 1000px;
+        justify-content: center;
+    } 
+    .mainNav ul li {
+        padding: 0;
+    }
+    .mainNav .navBar-toggle{
+        display: grid !important;
+    }
+    .entry-content {
+        margin: 0 10% 10vh 10%;
+    }
+    .hatchery-page{
+        display: block;
+    }
+    .hatchery-page .grid-image{
+        width: 250px;
+    }
+/*End Body - Responsive*/
+    img.grid-image {
+        width: 270px;
+        margin: 3vh 10px;
+        transition: 250ms ease-in-out;
+    }  
+    .footer {
+        margin: 3vh 8vw;
+    }
+    .footer-header, .footer-content {
+        display: block;
+    }
+    .footer-header-1{
+        display: block;
+    }
+    .footer-content-1 {
+        display: block;
+        width: 90%;
+        margin-bottom: 50px;
+    }
+    #products {
+        border: #2C5364 double 1px;
+        margin: 0;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+        grid-template-rows: repeat(2, auto);
+        justify-content: center;  
+    }
+}
+/*
+STYLING FOR PHONES
+DISPLAY WIDTH <= 600PX
+*/
+@media (max-width: 600px){
+    p.tagline{
+        display: none;
+    }
+    .secondary-content{
+        display: inline-block;
+        margin: 0 5%;
+    }
+    img.grid-image {
+        display: block;
+        width: 100%;
+        margin: 3vh 0;
+        transition: 250ms ease-in-out;
+    }  
+    .hatchery-page-intro{
+        width: 80vw;
+    }
+    .hatchery-page{
+        display: block;
+    }
+    .hatchery-page .grid-image, .map{
+        width: 70vw;
+    }
+    .map{
+        height: auto;
+        margin-bottom: 30px;
+    }
+    h1.page-header{
+        width:88vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+    .sub-hatchery {
+        width: 70vw;
+        margin: 0 15vw ;
+    }
+    img.hatchery-page-banner{
+        width: 90%;
+        height: auto;
+    }
+}
