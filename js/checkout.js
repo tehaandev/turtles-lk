@@ -9,6 +9,14 @@ document.addEventListener('alpine:init', () => {
     gender: document.getElementById('gender'),
 
     goToCheckout() {
+      if (this.name.value == "") {
+        alert("Please enter your name");
+        return;
+      }
+      if (this.email.value == "") {
+        alert("Please enter your email");
+        return;
+      }
       localStorage.setItem('name', this.name.value);
       localStorage.setItem('email', this.email.value);
       localStorage.setItem('gender', this.gender.value);
@@ -42,7 +50,6 @@ document.getElementById('total').innerHTML = total;
 
 var phoneInput = document.querySelector("#phone");
 var phone_input = intlTelInput(phoneInput);
-var phoneValtidity = phone_input.isValidNumber();
 window.intlTelInput(phoneInput, {
   preferredCountries: ["lk"],
   nationalMode: false,
@@ -61,6 +68,7 @@ document.getElementById('confirmEmail').addEventListener('focusout', function ()
 });
 
 document.getElementById('phone').addEventListener('focusout', function () {
+  var phoneValtidity = phone_input.isValidNumber();
   if (phoneValtidity == false) {
     alert("Invalid phone number");
     phoneInput.value = "";
