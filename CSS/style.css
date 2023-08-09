@@ -666,3 +666,25 @@ DISPLAY WIDTH <= 600PX
         border: #03045E solid 2px;
     }
 }
+
+#bookTicketsBtn {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    padding: 10px;
+    background-color: #03045E;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 3px;
+    width: auto;
+    height: 41px;
+    transition:200ms ease-in-out;
+    margin-top: 3vh;
+    z-index: 999;
+}
+
+#bookTicketsBtn:hover {
+    background-color: #0047ab;
+    transition:200ms ease-in-out;
+}
