@@ -36,31 +36,46 @@
                         class="text-gray-700  text-bold">
                             <!-- Date picker -->
                             <div class="inline">
-                                <label class="text-lg" for="name">Full name:</label>
+                                <label class="text-lg" for="name">
+                                    Full name:
+                                    <span class="text-red-500">*</span>
+                                </label>
                                 <input 
                                 class="p-2 mt-2 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none" 
                                 placeholder="John Doe" id="name" required>
                             </div>
                             <div class="mt-4">
-                                <label class="text-lg" for="phone">Phone number:</label>
+                                <label class="text-lg" for="phone">
+                                    Phone number:
+                                    <span class="text-red-500">*</span>
+                                </label>
                                 <input 
                                 class="p-2 mt-2 w-max bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none"
                                 type="text" name="phone" id="phone" required>
                             </div>
                             <div class="mt-4">
-                                <label class="text-lg" for="email">Email:</label>
+                                <label class="text-lg" for="email">
+                                    Email:
+                                    <span class="text-red-500">*</span>
+                                </label>
                                 <input placeholder="JohnDoe@gmail.com"
                                 class="p-2 mt-2 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none"
                                 type="email" name="email" id="email" required>
                             </div>
                             <div class="mt-4">
-                                <label class="text-lg" for="confirmEmail">Confirm email:</label>
+                                <label class="text-lg" for="confirmEmail">
+                                    Confirm email:
+                                    <span class="text-red-500">*</span>
+                                </label>
                                 <input placeholder="JohnDoe@gmail.com"
                                 class="p-2 mt-2 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none"
                                 type="email" name="confirmEmail" id="confirmEmail" required>
                             </div>
                             <div class="mt-4">
-                                <label class="text-lg" for="confirmEmail">Gender:</label>
+                                <label class="text-lg" for="confirmEmail">
+                                    Gender:
+                                    <span class="text-red-500">*</span>
+                                </label>
                                 <select 
                                 class="p-2 mt-2 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none"
                                 name="gender" id="gender">
@@ -69,7 +84,10 @@
                                 </select>
                             </div>
                         </form>
-                        
+                        <p class="text-xs text-center mt-3">
+                            <span class="text-red-500">*</span>
+                            Required fields.
+                        </p>
                     </div>
                 
                     <!-- Summary Table -->

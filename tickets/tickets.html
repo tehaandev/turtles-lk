@@ -43,6 +43,7 @@
             
             <div
             class="w-max px-10 py-8 mx-auto bg-white shadow-xl max-[815px]:mx-5"
+            :class="{'pointer-events-none' : isWPopUpOpen}"
             x-data="{
                     ratesPopUp: false,
                     adult_LK_count: 0,
@@ -108,7 +109,10 @@
                     class="text-gray-700  text-bold">
                         <!-- Date picker -->
                         <div class="inline py-5">
-                            <label class="text-lg" for="datepicker">When are you coming?</label>
+                            <label class="text-lg" for="datepicker">
+                                When are you coming?
+                                <span class="text-red-500">*</span>
+                            </label>
                             <input 
                             class="p-2 mt-2 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none" 
                             placeholder="DD-MM-YYYY" 
@@ -119,8 +123,10 @@
                         <!-- Selecting categories -->
                         <div
                         class="mt-7">
-                            <p class="text-bold text-lg" for="">Category/ Categories:</p>
-
+                            <p class="text-bold text-lg" for="">Category/ Categories:
+                                <span class="text-red-500">*</span>
+                            </p>
+                            
                             <!-- LK Adult Category -->
                             <div class="bg-white mt-2 px-3 grid grid-cols-2 justify-items-center align-middle">
                                 <!-- Adult-LK label -->
@@ -217,7 +223,10 @@
                             </div>
                             
                             <!-- Time slot picker -->
-                            <label class="text-bold text-lg" for="user_date">Pick your time slot(s):</label>
+                            <label class="text-bold text-lg" for="user_date">
+                                Pick your time slot(s):
+                                <span class="text-red-500">*</span>
+                            </label>
                             <div class="grid grid-cols-2 gap-y-8 my-5 max-[500px]:grid-cols-1">
                                 <template x-for="(timeSlots, id) in $store.ticket.timeSlots">
                                     <div 
@@ -231,6 +240,10 @@
                             </div>
                             <p class="text-xs text-center">
                                 NOTE: Multiple <span class="font-bold">consecutive</span> timeslots can be selected.
+                            </p>
+                            <p class="text-xs text-center">
+                                <span class="text-red-500">*</span>
+                                Required fields.
                             </p>
                         </div>
                     </form>
