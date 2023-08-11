@@ -52,6 +52,9 @@
                                 <input 
                                 class="p-2 mt-2 w-max bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none"
                                 type="text" name="phone" id="phone" required>
+                                <p class="mt-2">
+                                    <span class="text-red-500" id="phoneInvalid"></span>
+                                </p>
                             </div>
                             <div class="mt-4">
                                 <label class="text-lg" for="email">
@@ -70,6 +73,9 @@
                                 <input placeholder="JohnDoe@gmail.com"
                                 class="p-2 mt-2 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none"
                                 type="email" name="confirmEmail" id="confirmEmail" required>
+                                <p class="mt-2">
+                                    <span class="text-red-500" id="emailMismatch"></span>
+                                </p>
                             </div>
                             <div class="mt-4">
                                 <label class="text-lg" for="confirmEmail">

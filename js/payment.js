@@ -13,20 +13,23 @@ document.addEventListener('alpine:init', () => {
 });
 
 // Card number validation
-card = document.getElementById('card');
-card.addEventListener('input', function (e) {
+document.getElementById('card').addEventListener('input', function (e) {
   const input = e.target.value;
   const inputLength = input.length;
   if (inputLength == 4 || inputLength == 9 || inputLength == 14) {
     e.target.value = input + " ";
   }
 
-  if (card.length > 19) {
-    alert("Please enter a valid card number");
-    document.getElementById('card').value = '';
-  }
+  if (inputLength > 19) {
+    document.getElementById('card').style.borderColor = "red";
+    document.getElementById('cardInvalid').innerHTML = "Invalid card number";
+  } else {
+    document.getElementById('card').style.borderColor = "#E2E8F0";
+    document.getElementById('cardInvalid').innerHTML = "";
+  } 
 });
-card.addEventListener('focusout', function () {
+
+document.getElementById('card').addEventListener('focusout', function () {
   const card = document.getElementById('card').value;
   const cardArray = card.split(" ");
   const card1 = cardArray[0];
@@ -35,17 +38,24 @@ card.addEventListener('focusout', function () {
   const card4 = cardArray[3];
 
   if (card1.length != 4 || card2.length != 4 || card3.length != 4 || card4.length != 4) {
-    alert("Please enter a valid card number");
-    document.getElementById('card').value = '';
+    document.getElementById('card').style.borderColor = "red";
+    document.getElementById('cardInvalid').innerHTML = "Invalid card number";
+  } else {
+    document.getElementById('card').style.borderColor = "#E2E8F0";
+    document.getElementById('cardInvalid').innerHTML = "";
   }
-  // Checks if all inputs are numerals
+
   for (item in cardArray) {
     if (isNaN(cardArray[item])) {
-      alert("Please enter a valid card number");
-      document.getElementById('card').value = '';
+      document.getElementById('card').style.borderColor = "red";
+      document.getElementById('cardInvalid').innerHTML = "Card number should only contain numbers";
+    } else {
+      document.getElementById('card').style.borderColor = "#E2E8F0";
+      document.getElementById('cardInvalid').innerHTML = "";
     }
   }
 });
+
 
 
 
@@ -58,33 +68,45 @@ expDate.addEventListener('input', function (e) {
     e.target.value = input + "/";
   }
 });
-expDate.addEventListener('focusout', function () {
+expDate.addEventListener('input', function () {
   const expDate = document.getElementById('expDate').value;
   const expDateArray = expDate.split("/");
-  const expMonth = expDateArray[0];
-  const expYear = expDateArray[1];
+  const expMonth = parseInt(expDateArray[0]);
+  const expYear = parseInt(expDateArray[1]);
   const today = new Date();
   const currentMonth = today.getMonth() + 1;
   const currentYear = today.getFullYear();
-  if (expMonth < 1 || expMonth > 12) {
-    alert("Please enter a valid month");
-    document.getElementById('expDate').value = '';
+  const currentYearLastDigits = currentYear.toString().substr(-2);
+  // shouldnt allow text in the input
+  if (isNaN(expMonth) || isNaN(expYear)) {
+    document.getElementById('expDate').style.borderColor = "red";
+    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date";
+  } else if (expMonth < 1 || expMonth > 12) {
+    document.getElementById('expDate').style.borderColor = "red";
+    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date";
+  } else if (expYear < currentYearLastDigits) {
+    document.getElementById('expDate').style.borderColor = "red";
+    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date";
+  } else if (expYear == currentYearLastDigits && expMonth < currentMonth) {
+    document.getElementById('expDate').style.borderColor = "red";
+    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date";
+  } else {
+    document.getElementById('expDate').style.borderColor = "#E2E8F0";
+    document.getElementById('expDateInvalid').innerHTML = "";
   }
 });
 
 // CVV validation
-cvv = document.getElementById('cvv');
-cvv.addEventListener('focusout', function () {
+document.getElementById('cvv').addEventListener('input', function () {
   const cvv = document.getElementById('cvv').value;
-  if (cvv.length != 3) {
-    alert("Please enter a valid CVV");
-    document.getElementById('cvv').value = '';
+  if (cvv.length != 3 || isNaN(cvv)) {
+    document.getElementById('cvv').style.borderColor = "red";
+    document.getElementById('cvvInvalid').innerHTML = "Invalid CVV";
+  } else {
+    document.getElementById('cvv').style.borderColor = "#E2E8F0";
+    document.getElementById('cvvInvalid').innerHTML = ""; 
   }
-  // Checks if all inputs are numerals
-  if (isNaN(cvv)) {
-    alert("Please enter a valid CVV");
-    document.getElementById('cvv').value = '';
-  }
+    
 });
 
 

@@ -59,20 +59,26 @@ window.intlTelInput(phoneInput, {
 // Validations
 var email = document.getElementById('email');
 var confirmEmail = document.getElementById('confirmEmail');
-document.getElementById('confirmEmail').addEventListener('focusout', function () {
+document.getElementById('confirmEmail').addEventListener('input', function () {
   if (email.value != confirmEmail.value) {
-    alert("Emails do not match");
-    confirmEmail.value = "";
-    email.value = "";
+    email.style.borderColor = "red";
+    confirmEmail.style.borderColor = "red";
+    document.getElementById('emailMismatch').innerHTML = "Emails do not match";
+  } else {
+    email.style.borderColor = "#E2E8F0";
+    confirmEmail.style.borderColor = "#E2E8F0";
+    document.getElementById('emailMismatch').innerHTML = "";
   }
 });
 
-document.getElementById('phone').addEventListener('focusout', function () {
+document.getElementById('phone').addEventListener('input', function () {
   var phoneValtidity = phone_input.isValidNumber();
   if (phoneValtidity == false) {
-    alert("Invalid phone number");
-    phoneInput.value = "";
+    phoneInput.style.borderColor = "red";
+    document.getElementById('phoneInvalid').innerHTML = "Invalid phone number";
   } else {
+    phoneInput.style.borderColor = "#E2E8F0";
+    document.getElementById('phoneInvalid').innerHTML = "";
     localStorage.setItem('phone', phone_input.getNumber(intlTelInputUtils.numberFormat.INTERNATIONAL));
   }
 });
