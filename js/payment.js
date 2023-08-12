@@ -3,11 +3,42 @@ console.info('/js/payment.js loaded');
 document.addEventListener('alpine:init', () => {
   Alpine.data('payment', () => ({
     selectedTimeTxt: (localStorage.getItem('selectedTimeTxt') || '').split(','),
+    inputAvailability: false,
+    inputAvailability() {
+      if (document.getElementById('card').value == "") {
+        document.getElementById('card').style.borderColor = "red";
+        document.getElementById('cardInvalid').innerHTML = "Please enter your card number";
+      } else if (document.getElementById('expDate').value == "") {
+        document.getElementById('expDate').style.borderColor = "red";
+        document.getElementById('expDateInvalid').innerHTML = "Please enter your card expiry date";
+      } else if (document.getElementById('cvv').value == "") {
+        document.getElementById('cvv').style.borderColor = "red";
+        document.getElementById('cvvInvalid').innerHTML = "Please enter your CVV";
+      } else if (document.getElementById('nameOnCard').value == "") {
+        document.getElementById('nameOnCard').style.borderColor = "red";
+        document.getElementById('nameOnCardInvalid').innerHTML = "Please enter your name";
+      } else {
+        document.getElementById('card').style.borderColor = "#E2E8F0";
+        document.getElementById('cardInvalid').innerHTML = "";
+        document.getElementById('expDate').style.borderColor = "#E2E8F0";
+        document.getElementById('expDateInvalid').innerHTML = "";
+        document.getElementById('cvv').style.borderColor = "#E2E8F0";
+        document.getElementById('cvvInvalid').innerHTML = "";
+        document.getElementById('nameOnCard').style.borderColor = "#E2E8F0";
+        document.getElementById('nameOnCardInvalid').innerHTML = "";
+        this.inputAvailability = true;
+      }
+
+    },
+
     goToConfirmation() {
-      localStorage.setItem('card', document.getElementById('card').value);
-      localStorage.setItem('expDate', document.getElementById('expDate').value);
-      localStorage.setItem('cvv', document.getElementById('cvv').value);
-      window.location.href = "/tickets/confirmation.html";
+      this.inputAvailability();
+      if (this.inputAvailability == true) {
+        localStorage.setItem('card', document.getElementById('card').value);
+        localStorage.setItem('expDate', document.getElementById('expDate').value);
+        localStorage.setItem('cvv', document.getElementById('cvv').value);
+        window.location.href = "/tickets/confirmation.html";
+      }
     }
   }))
 });
@@ -48,16 +79,13 @@ document.getElementById('card').addEventListener('focusout', function () {
   for (item in cardArray) {
     if (isNaN(cardArray[item])) {
       document.getElementById('card').style.borderColor = "red";
-      document.getElementById('cardInvalid').innerHTML = "Card number should only contain numbers";
+      document.getElementById('cardInvalid').innerHTML = "Input should only contain numbers";
     } else {
       document.getElementById('card').style.borderColor = "#E2E8F0";
       document.getElementById('cardInvalid').innerHTML = "";
     }
   }
 });
-
-
-
 
 // Expiry date validation
 expDate = document.getElementById('expDate');
@@ -77,7 +105,6 @@ expDate.addEventListener('input', function () {
   const currentMonth = today.getMonth() + 1;
   const currentYear = today.getFullYear();
   const currentYearLastDigits = currentYear.toString().substr(-2);
-  // shouldnt allow text in the input
   if (isNaN(expMonth) || isNaN(expYear)) {
     document.getElementById('expDate').style.borderColor = "red";
     document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date";
@@ -109,8 +136,19 @@ document.getElementById('cvv').addEventListener('input', function () {
     
 });
 
+// Name on card validation
+document.getElementById('nameOnCard').addEventListener('input', function () {
+  const nameOnCard = document.getElementById('nameOnCard').value;
+  if (nameOnCard == "" || !isNaN(nameOnCard)) {
+    document.getElementById('nameOnCard').style.borderColor = "red";
+    document.getElementById('nameOnCardInvalid').innerHTML = "Invalid name";
+  } else {
+    document.getElementById('nameOnCard').style.borderColor = "#E2E8F0";
+    document.getElementById('nameOnCardInvalid').innerHTML = "";
+  }
+});
 
-
+// Summary table values
 const selectedDate = localStorage.getItem('selectedDate');
 const selectedTime = localStorage.getItem('selectedTime');
 const adult_LK_count = localStorage.getItem('adult_LK_count');
