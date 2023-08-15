@@ -43,7 +43,6 @@
             
             <div
             class="w-max px-10 py-8 mx-auto bg-white shadow-xl max-[815px]:mx-5"
-            :class="{'pointer-events-none' : isWPopUpOpen}"
             x-data="{
                     ratesPopUp: false,
                     adult_LK_count: 0,
@@ -138,12 +137,13 @@
 
                                 <!-- Ticket count -->
                                 <input 
-                                class="align-middle text-center w-1/2 bg-gray-200 rounded p-2"
+                                class="counts align-middle text-center w-1/2 bg-gray-200 rounded p-2"
                                 type="number" 
                                 x-model="adult_LK_count"
                                 name="adult_LK_count" 
                                 id="adult_LK_count" 
-                                min="0" max="10">
+                                min="0" max="10"
+                                x-on:change="calculate()">
                             </div>
 
                             <!-- LK Child Category -->
@@ -157,12 +157,13 @@
 
                                 <!-- Ticket count -->
                                 <input 
-                                class="align-middle text-center w-1/2 bg-gray-200 rounded p-2"
+                                class="counts align-middle text-center w-1/2 bg-gray-200 rounded p-2"
                                 type="number" 
                                 x-model="child_LK_count"
                                 name="child_LK_count" 
                                 id="child_LK_count" 
-                                min="0" max="10">
+                                min="0" max="10"
+                                x-on:change="calculate()">
                             </div>
 
                             <!-- FR Adult Category -->
@@ -176,12 +177,13 @@
 
                                 <!-- Ticket count -->
                                 <input 
-                                class="align-middle text-center w-1/2 bg-gray-200 rounded p-2"
+                                class="counts align-middle text-center w-1/2 bg-gray-200 rounded p-2"
                                 type="number" 
                                 x-model="adult_FR_count"
                                 name="adult_FR_count" 
                                 id="adult_FR_count" 
-                                min="0" max="10">
+                                min="0" max="10"
+                                x-on:change="calculate()">
                             </div>
                             
                             <!-- FR Child Category -->
@@ -195,12 +197,13 @@
 
                                 <!-- Ticket count -->
                                 <input 
-                                class="align-middle text-center w-1/2 bg-gray-200 rounded p-2"
+                                class="counts align-middle text-center w-1/2 bg-gray-200 rounded p-2"
                                 type="number" 
                                 x-model="child_FR_count"
                                 name="child_FR_count" 
                                 id="child_FR_count" 
-                                min="0" max="10">
+                                min="0" max="10"
+                                x-on:change="calculate()">
                             </div>
                             
                             <!-- Infant Category -->
@@ -214,12 +217,13 @@
 
                                 <!-- Ticket count -->
                                 <input 
-                                class="align-middle text-center w-1/2 bg-gray-200 rounded p-2"
+                                class="counts align-middle text-center w-1/2 bg-gray-200 rounded p-2"
                                 type="number"
                                 x-model="infant_count"
                                 name="infant_count" 
                                 id="infant_count" 
-                                min="0" max="10">
+                                min="0" max="10"
+                                x-on:change="calculate()">
                             </div>
                             
                             <!-- Time slot picker -->
