@@ -19,28 +19,38 @@
     </head>
 
     <body>
+        <div class="nav-header">
+            <input type="checkbox" id="toggle">
+            <nav class="mainNav">
+                <div class="title-logo">
+                    <a href="index.html"><img src="/media/logo.webp" alt="" class="logo"></a>
+                    <a href="index.html" class="site-name">Turtles of LK :)</a>
+                    <p class="tagline">Save the turtles!</p>
+                </div>
+                <label class="navBar-toggle" for="toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </label>
+                <ul>
+                    <a href="index.html"><li>Home</li></a>
+                    <a href="categories.html"><li>Categories of Turtles</li></a>
+                    <a href="threats-to-turtles.html"><li>Threats to Turtles</li></a>
+                    <a href="hikkaduwa.html"><li class="active">Hikkaduwa Turtle Hatchery</li></a>
+                    <li>
+                        <a href="#">Other Hatcheries</a>
+                        <ul class="dropdown">
+                            <a href="kosgoda.html"><li>Kosgoda</li></a>
+                            <a href="bentota.html"><li>Bentota</li></a>
+                        </ul>
+                    </li>
+                    <a href="purchase-and-donate.html"><li>Support Us</li></a>
+                </ul>
+            </nav>
+        </div>
         <div
         class='custom-bg flex items-center justify-center min-h-screen z-10' 
         x-data="ticket">
-            <!-- Alert box -->
-            <div 
-            x-data="{isWPopUpOpen: true}"
-            x-show="isWPopUpOpen" 
-            x-transition
-            class="fixed flex mx-auto w-max p-4 rounded border-2 border-slate-200 text-sm bg-white inset-0 items-center justify-center h-max my-auto overflow-hidden shadow-2xl max-[815px]:mx-5 max-[815px]:w-auto"            
-            id="alert-box">
-                <div>
-                    <h2 class="text-3xl py-2">Welcome!</h2>
-                    <p>Please click 'Continue' to proceed with the ticketing process.</p>
-                    <button
-                    type="button"
-                    class="w-full py-3 mt-5 font-medium tracking-widest text-white uppercase bg-slate-500 shadow-lg focus:outline-none hover:bg-slate-600 hover:shadow-none duration-200"
-                    x-on:click="isWPopUpOpen = !isWPopUpOpen">
-                        Continue
-                    </button>
-                </div>
-            </div>
-            
             <div
             class="w-max px-10 py-8 mx-auto bg-white shadow-xl max-[815px]:mx-5"
             x-data="{
@@ -54,6 +64,7 @@
                     total: 0,
                     selectedTime: [],
                     selectedTimeTxt: [], 
+                    isWPopUpOpen: true,
                 
                     selectTimeSlots(id){
                         if(this.selectedTime.includes(id)){
@@ -77,7 +88,7 @@
 
                     goToCheckout(){
                     
-                        if(localStorage.getItem('selectedDate') === null){
+                        if(document.getElementById('datepicker').value == ''){
                             alert('Please select a date.');
                             return;
                         }
@@ -100,16 +111,34 @@
                 <header class="text-center text-3xl p-2 mb-8">
                     <h1>Buy Tickets!</h1>
                 </header>
+                <!-- Alert box -->
+                <div
+                x-show="isWPopUpOpen" 
+                x-transition
+                class="fixed flex mx-auto w-max p-4 rounded border-2 border-slate-200 text-sm bg-white inset-0 items-center justify-center h-max my-auto overflow-hidden shadow-2xl max-[815px]:mx-auto max-[815px]:max-w-fit"            
+                id="alert-box">
+                    <div>
+                        <h2 class="text-3xl py-2">Welcome!</h2>
+                        <p>Please click 'Continue' to proceed with the ticketing process.</p>
+                        <button
+                        type="button"
+                        class="w-full py-3 mt-5 font-medium tracking-widest text-white uppercase bg-slate-500 shadow-lg focus:outline-none hover:bg-slate-600 hover:shadow-none duration-200"
+                        x-on:click="isWPopUpOpen = !isWPopUpOpen">
+                            Continue
+                        </button>
+                    </div>
+                </div>
+
                 <div
                 class="grid grid-cols-2 max-[815px]:grid-cols-1"
-                :class="{'pointer-events-none' : ratesPopUp}">
+                :class="{'pointer-events-none' : ratesPopUp, 'pointer-events-none' : isWPopUpOpen}">
                     <form
                     action="" 
-                    class="text-gray-700  text-bold">
+                    class="text-gray-700  text-bold mx-5">
                         <!-- Date picker -->
                         <div class="inline py-5">
                             <label class="text-lg" for="datepicker">
-                                When are you coming?
+                                Select date:  
                                 <span class="text-red-500">*</span>
                             </label>
                             <input 
@@ -236,7 +265,7 @@
                                     <div 
                                     x-on:click="selectTimeSlots(timeSlots.id)"
                                     x-bind:class="selectedTime.includes(timeSlots.id) ? 'bg-sky-600' : 'bg-sky-300'"
-                                    class="timeSlotBtn grid-cols-1 h-10 w-40 text-white text-center mx-auto align-middle 
+                                    class="timeSlotBtn grid-cols-1 h-10 w-40 text-white text-center mx-5 align-middle 
                                     flex items-center justify-center hover:cursor-pointer hover:bg-sky-600 duration-200">
                                         <span x-text="timeSlots.time"></span>
                                     </div>
@@ -398,6 +427,7 @@
                         </button>
                     </div>
                 </div>
+            </div>
         </div>
         <script src="/js/tickets.js"></script>
     </body>

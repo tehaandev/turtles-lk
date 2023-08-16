@@ -148,3 +148,53 @@ input:checked ~ .mainNav .navBar-toggle .bar:nth-child(3){
     transform: rotate(-45deg);
 }
 /*End Main NavBar CSS*/
+
+/*
+STYLING FOR SMALLER LAPTOPS/ TABLETS
+DISPLAY WIDTH <= 1366px
+*/
+@media (max-width: 1366px){
+    a.site-name{
+        padding: 0;
+    }
+/*Start Main Nav - Responsive*/
+    .mainNav {
+        padding: 0 2rem;
+    }
+    .mainNav ul {
+        display: grid;
+        position: absolute;
+        background-color: #0047ab;
+        text-align: center;
+        opacity: 0.93; 
+        width:100%;
+        top: 65px;
+        left: 0;
+        transform: translateY(-100%);
+        z-index: -1;
+        transition: 0.5s;
+    }
+    .mainNav ul li .dropdown{
+        position:sticky;
+        z-index: 999;
+        display: none;  
+        transition: 0.4s;
+    }
+    .mainNav ul li .dropdown a{
+        line-height: 65px;
+        display: block;
+        transition: 1s;
+    }
+    .mainNav ul li:hover .dropdown{
+        background-color: #03045E;
+        display:block;
+        width: 100% !important;
+        line-height: 65px;
+        
+    }
+    .mainNav ul li:hover .dropdown a{
+        line-height: 65px;
+        display: block;
+        transition: 1s;
+    }
+}

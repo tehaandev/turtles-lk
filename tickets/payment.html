@@ -18,6 +18,35 @@
     </head>
 
     <body>
+        <div class="nav-header">
+            <input type="checkbox" id="toggle">
+            <nav class="mainNav">
+                <div class="title-logo">
+                    <a href="index.html"><img src="/media/logo.webp" alt="" class="logo"></a>
+                    <a href="index.html" class="site-name">Turtles of LK :)</a>
+                    <p class="tagline">Save the turtles!</p>
+                </div>
+                <label class="navBar-toggle" for="toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </label>
+                <ul>
+                    <a href="index.html"><li>Home</li></a>
+                    <a href="categories.html"><li>Categories of Turtles</li></a>
+                    <a href="threats-to-turtles.html"><li>Threats to Turtles</li></a>
+                    <a href="hikkaduwa.html"><li class="active">Hikkaduwa Turtle Hatchery</li></a>
+                    <li>
+                        <a href="#">Other Hatcheries</a>
+                        <ul class="dropdown">
+                            <a href="kosgoda.html"><li>Kosgoda</li></a>
+                            <a href="bentota.html"><li>Bentota</li></a>
+                        </ul>
+                    </li>
+                    <a href="purchase-and-donate.html"><li>Support Us</li></a>
+                </ul>
+            </nav>
+        </div>
         <div
         class='custom-bg flex items-center justify-center min-h-screen z-10' 
         x-data="payment">
