@@ -20,6 +20,9 @@ body {
     }
 }
 
+h1 {
+    color: #03045E;
+}
 .center {
     display: block;
     margin-left: auto;
@@ -174,6 +177,13 @@ DISPLAY WIDTH <= 1366px
         z-index: -1;
         transition: 0.5s;
     }
+    .mainNav ul li {
+        padding: 0;
+    }
+    .mainNav .navBar-toggle{
+        display: grid !important;
+    }
+
     .mainNav ul li .dropdown{
         position:sticky;
         z-index: 999;
@@ -192,9 +202,7 @@ DISPLAY WIDTH <= 1366px
         line-height: 65px;
         
     }
-    .mainNav ul li:hover .dropdown a{
-        line-height: 65px;
-        display: block;
-        transition: 1s;
-    }
 }
+
+
+/*End Main Nav - Responsive*/
