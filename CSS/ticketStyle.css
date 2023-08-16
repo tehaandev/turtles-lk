@@ -203,6 +203,11 @@ DISPLAY WIDTH <= 1366px
         
     }
 }
+@media (max-width: 600px){
+    p.tagline{
+        display: none;
+    }
+}
 
 
 /*End Main Nav - Responsive*/
