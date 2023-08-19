@@ -1,11 +1,13 @@
 body {
-    background: scroll linear-gradient(#d5edff, #FFFFFF);
+    background: scroll linear-gradient(#bae2ff, #EAF6FF);
     background-size: 300% 300%;
     min-height: 100vh;
     max-width: 100%;
     animation: color 7s ease-in-out infinite;
     font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
     color: #232528;
+    font-size: 1.1em;
+    margin: 0;
     border-top:#FFA400 solid 5px;
 }
 @keyframes color {
@@ -151,6 +153,82 @@ input:checked ~ .mainNav .navBar-toggle .bar:nth-child(3){
     transform: rotate(-45deg);
 }
 /*End Main NavBar CSS*/
+
+h1 {
+    color: #03045E;
+}
+.page-header {
+    text-align: center;
+    margin: 8vh 0;
+    margin-left: 0;
+    margin-right: 0;
+}  
+
+/*Start Footer*/
+#footer-hr {
+    background-color: #03045E;
+    height: 3px;
+    width: 85%;
+    border: none;
+    justify-items: center;
+    margin: auto;
+
+}
+img.top-button{
+    height: 5vh;
+    width: auto;
+    margin-left: 85%;
+    transition: 150ms ease-in-out;
+}
+img.top-button:hover {
+    scale: 1.07;
+    transition: 150ms ease-in-out;
+}
+.footer {
+    margin: 5vh 8vw;
+}
+.footer-header, .footer-content {
+    display: flex;
+}
+.footer-header-1{
+    display: block;
+}
+.footer-content-1 {
+    display: block;
+    width: 50%;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    text-align: justify;
+}
+.footer-content-1 a{
+    color: #03045E;
+    text-decoration: none;
+}
+.social-icons{
+    display: block;   
+}
+.social-icons img {
+    display: inline;
+    width: 35px;
+    height: auto;
+    margin: 0 5px 0;
+    transition: 0.2s ease-in-out;
+}
+.social-icons img:hover {
+    scale: 0.9;
+    transition: 0.2s ease-in-out;
+}
+
+.footer-logo {
+    display: block;
+    width: 70px;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+/*End Footer*/
+
+
 
 /*
 STYLING FOR SMALLER LAPTOPS/ TABLETS
