@@ -33,7 +33,7 @@ document.addEventListener('alpine:init', () => {
 
     goToConfirmation() {
       this.inputAvailability();
-      if (this.inputAvailability == true) {
+      if (this.inputAvailability == true && cardValid == true) {
         localStorage.setItem('card', document.getElementById('card').value);
         localStorage.setItem('expDate', document.getElementById('expDate').value);
         localStorage.setItem('cvv', document.getElementById('cvv').value);
@@ -44,59 +44,63 @@ document.addEventListener('alpine:init', () => {
 });
 
 // Card number validation
-document.getElementById('card').addEventListener('input', function (e) {
-  const input = e.target.value;
-  const inputLength = input.length;
-  if (inputLength == 4 || inputLength == 9 || inputLength == 14) {
-    e.target.value = input + " ";
-  }
+cardValid = false;
+document.getElementById('card').addEventListener("input", function (event) {
+  const input = event.target;
+  const value = input.value.replace(/\D/g, '');
 
-  if (inputLength > 19) {
+  const formattedValue = formatCardNumber(value);
+  input.value = formattedValue;
+
+  if (document.getElementById('card').value.length != 19) {
     document.getElementById('card').style.borderColor = "red";
     document.getElementById('cardInvalid').innerHTML = "Invalid card number";
+    cardValid = false;
   } else {
     document.getElementById('card').style.borderColor = "#E2E8F0";
     document.getElementById('cardInvalid').innerHTML = "";
-  } 
+    cardValid = true;
+  }
 });
 
-document.getElementById('card').addEventListener('focusout', function () {
-  const card = document.getElementById('card').value;
-  const cardArray = card.split(" ");
-  const card1 = cardArray[0];
-  const card2 = cardArray[1];
-  const card3 = cardArray[2];
-  const card4 = cardArray[3];
+document.getElementById('card').addEventListener('keydown', function (event) {
 
-  if (card1.length != 4 || card2.length != 4 || card3.length != 4 || card4.length != 4) {
-    document.getElementById('card').style.borderColor = "red";
-    document.getElementById('cardInvalid').innerHTML = "Invalid card number";
-  } else {
-    document.getElementById('card').style.borderColor = "#E2E8F0";
-    document.getElementById('cardInvalid').innerHTML = "";
-  }
+  if (event.key === 'Backspace') {
+    const input = event.target;
+    const cursorPosition = input.selectionStart;
 
-  for (item in cardArray) {
-    if (isNaN(cardArray[item])) {
-      document.getElementById('card').style.borderColor = "red";
-      document.getElementById('cardInvalid').innerHTML = "Input should only contain numbers";
-    } else {
-      document.getElementById('card').style.borderColor = "#E2E8F0";
-      document.getElementById('cardInvalid').innerHTML = "";
+    if (cursorPosition % 5 === 0 && cursorPosition > 0) {
+      event.preventDefault();
+      const newValue = input.value.substring(0, cursorPosition - 1) +
+        input.value.substring(cursorPosition);
+      input.value = formatCardNumber(newValue);
+      input.selectionStart = cursorPosition - 1;
+      input.selectionEnd = cursorPosition - 1;
     }
   }
 });
 
-// Expiry date validation
-expDate = document.getElementById('expDate');
-expDate.addEventListener('input', function (e) {
-  const input = e.target.value;
-  const inputLength = input.length;
-  if (inputLength == 2) {
-    e.target.value = input + "/";
+function formatCardNumber(cardNumber) {
+  const chunks = [];
+  for (let i = 0; i < cardNumber.length; i += 4) {
+    chunks.push(cardNumber.slice(i, i + 4));
   }
-});
-expDate.addEventListener('input', function () {
+  return chunks.join(' ');
+}
+
+
+expDate = document.getElementById('expDate');
+expDate.addEventListener("input", function (event) {
+  const input = event.target;
+  const value = input.value.replace(/\D/g, '');
+
+  const formattedValue = formatExpirationDate(value);
+  input.value = formattedValue;
+
+  if (document.getElementById('expDate').value.length == 2) {
+    document.getElementById('expDate').value += "/";
+  }
+
   const expDate = document.getElementById('expDate').value;
   const expDateArray = expDate.split("/");
   const expMonth = parseInt(expDateArray[0]);
@@ -107,21 +111,47 @@ expDate.addEventListener('input', function () {
   const currentYearLastDigits = currentYear.toString().substr(-2);
   if (isNaN(expMonth) || isNaN(expYear)) {
     document.getElementById('expDate').style.borderColor = "red";
-    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date";
+    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date (Ex. MM/YY).";
   } else if (expMonth < 1 || expMonth > 12) {
     document.getElementById('expDate').style.borderColor = "red";
-    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date";
+    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date (Ex. MM/YY).";
   } else if (expYear < currentYearLastDigits) {
     document.getElementById('expDate').style.borderColor = "red";
-    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date";
+    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date (Ex. MM/YY).";
   } else if (expYear == currentYearLastDigits && expMonth < currentMonth) {
     document.getElementById('expDate').style.borderColor = "red";
-    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date";
+    document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date (Ex. MM/YY).";
   } else {
     document.getElementById('expDate').style.borderColor = "#E2E8F0";
     document.getElementById('expDateInvalid').innerHTML = "";
   }
 });
+
+expDate.addEventListener('keydown', function (event) {
+  if (event.key === 'Backspace') {
+    const input = event.target;
+    const cursorPosition = input.selectionStart;
+
+    if (cursorPosition % 3 === 0 && cursorPosition > 0) {
+      event.preventDefault();
+      const newValue = input.value.substring(0, cursorPosition - 1) + input.value.substring(cursorPosition);
+      input.value = formatExpirationDate(newValue);
+      input.selectionStart = cursorPosition - 1;
+      input.selectionEnd = cursorPosition - 1;
+    }
+  }
+});
+
+function formatExpirationDate(expirationDate) {
+  const month = expirationDate.slice(0, 2);
+  const year = expirationDate.slice(2, 4);
+
+  if (month) {
+    return month + (year ? '/' + year : '');
+  }
+
+  return '';
+}
 
 // CVV validation
 document.getElementById('cvv').addEventListener('input', function () {
@@ -131,9 +161,9 @@ document.getElementById('cvv').addEventListener('input', function () {
     document.getElementById('cvvInvalid').innerHTML = "Invalid CVV";
   } else {
     document.getElementById('cvv').style.borderColor = "#E2E8F0";
-    document.getElementById('cvvInvalid').innerHTML = ""; 
+    document.getElementById('cvvInvalid').innerHTML = "";
   }
-    
+
 });
 
 // Name on card validation
