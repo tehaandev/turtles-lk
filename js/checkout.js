@@ -89,26 +89,22 @@ document.getElementById('name').addEventListener('input', function () {
 
 var email = document.getElementById('email');
 var confirmEmail = document.getElementById('confirmEmail');
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
 document.getElementById('email').addEventListener('input', function () {
-  var emailLength = false;
-  var emailValid = false;
-  if (email.value.length < 3) {
-    document.getElementById('email').style.borderColor = "red";
-    document.getElementById('emailInvalid').innerHTML = "Invalid email (Ex:JohnDoe@gmail.com)";
-  } else {
+  const userEmail = document.getElementById('email').value;
+  if (validateEmail(userEmail)) {
     document.getElementById('email').style.borderColor = "#E2E8F0";
     document.getElementById('emailInvalid').innerHTML = "";
-    emailLength = true;
-  }
-  if (email.value.indexOf("@") == -1 || email.value.indexOf(".") == -1 || email.value.indexOf(" ") != -1) {
+  } else {
     document.getElementById('email').style.borderColor = "red";
     document.getElementById('emailInvalid').innerHTML = "Invalid email (Ex:JohnDoe@gmail.com)";
-  } else {
-    document.getElementById('email').style.borderColor = "#E2E8F0";
-    document.getElementById('emailInvalid').innerHTML = "";
-    emailValid = true;
   }
 });
+
 
 document.getElementById('confirmEmail').addEventListener('input', function () {
   emailLC = email.value.toLowerCase();
