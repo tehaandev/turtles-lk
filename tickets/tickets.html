@@ -88,24 +88,51 @@
 
                     goToCheckout(){
                     
-                        if(document.getElementById('datepicker').value == ''){
-                            alert('Please select a date.');
-                            return;
+                        timeSlotsValid = false;
+                        if(this.selectedTime.length === 0){
+                            document.getElementById('timeSlotsInvalid').innerHTML = 'Please select a time slot.';
+                            document.getElementById('timeSlotLabel').scrollIntoView();
+                        } else {
+                            document.getElementById('timeSlotsInvalid').innerHTML = '';
+                            timeSlotsValid = true;
                         }
 
-                        if(this.selectedTime.length === 0){
-                            alert('Please select a time slot.');
-                            return;
+                        adultCountValid = false;
+                        if (this.adult_LK_count == 0 && this.adult_FR_count == 0) {
+                            document.getElementById('adult_LK_count').style.borderColor = 'red';
+                            document.getElementById('adult_FR_count').style.borderColor = 'red';
+                            document.getElementById('adultCountInvalid').innerHTML = 'Please select at least one adult ticket.';
+                            document.getElementById('adult_LK_count').scrollIntoView();
+                        } else {
+                            document.getElementById('adult_LK_count').style.borderColor = '#E2E8F0';
+                            document.getElementById('adult_FR_count').style.borderColor = '#E2E8F0';
+                            document.getElementById('adultCountInvalid').innerHTML = '';
+                            adultCountValid = true;
                         }
                         
-                        localStorage.setItem('selectedTime', this.selectedTime);
-                        localStorage.setItem('selectedTimeTxt', this.selectedTimeTxt);
-                        localStorage.setItem('adult_LK_count', this.adult_LK_count);
-                        localStorage.setItem('child_LK_count', this.child_LK_count);
-                        localStorage.setItem('adult_FR_count', this.adult_FR_count);
-                        localStorage.setItem('child_FR_count', this.child_FR_count);
-                        localStorage.setItem('infant_count', this.infant_count);
-                        window.location.href = '/tickets/checkout.html'; 
+                        dateValid = false;
+                        dateInput = document.getElementById('datepicker');
+                        if(dateInput.value == '') {
+                            dateInput.style.borderColor = 'red';
+                            document.getElementById('dateInvalid').innerHTML = 'Please select a date.';
+                            document.getElementById('datepicker').scrollIntoView();
+                        } else {
+                            dateInput.style.borderColor = '#E2E8F0';
+                            document.getElementById('dateInvalid').innerHTML = '';
+                            dateValid = true;
+                        }
+
+                        
+                        if (dateValid && adultCountValid && timeSlotsValid) {
+                            localStorage.setItem('selectedTime', this.selectedTime);
+                            localStorage.setItem('selectedTimeTxt', this.selectedTimeTxt);
+                            localStorage.setItem('adult_LK_count', this.adult_LK_count);
+                            localStorage.setItem('child_LK_count', this.child_LK_count);
+                            localStorage.setItem('adult_FR_count', this.adult_FR_count);
+                            localStorage.setItem('child_FR_count', this.child_FR_count);
+                            localStorage.setItem('infant_count', this.infant_count);
+                            window.location.href = '/tickets/checkout.html'; 
+                        }
                     }
                 }">
                 <header>
@@ -146,6 +173,9 @@
                             placeholder="DD-MM-YYYY" 
                             id="datepicker" 
                             x-model="datepicker" required></input>
+                            <p class="mt-1">
+                                <span class="text-red-500" id="dateInvalid"></span>
+                            </p>
                         </div>
 
                         <!-- Selecting categories -->
@@ -153,6 +183,9 @@
                         class="mt-7">
                             <p class="text-bold text-lg" for="">Category/ Categories:
                                 <span class="text-red-500">*</span>
+                            </p>
+                            <p class="mt-1">
+                                <span class="text-red-500" id="adultCountInvalid"></span>
                             </p>
                             
                             <!-- LK Adult Category -->
@@ -236,7 +269,7 @@
                             </div>
                             
                             <!-- Infant Category -->
-                            <div class="bg-white mt-2 px-3 grid grid-cols-2 justify-items-center align-middle">
+                            <div class="bg-white mt-2 px-3 grid grid-cols-2 justify-items-center align-middle max-[815px]:mb-5">
                                 <!-- Infant label -->
                                 <label 
                                 for="infant_count"
@@ -256,10 +289,13 @@
                             </div>
                             
                             <!-- Time slot picker -->
-                            <label class="text-bold text-lg" for="user_date">
+                            <label class="text-bold text-lg " for="user_date" id="timeSlotLabel">
                                 Select time slot(s):
                                 <span class="text-red-500">*</span>
                             </label>
+                            <p class="mt-1">
+                                <span class="text-red-500" id="timeSlotsInvalid"></span>
+                            </p>
                             <div class="grid grid-cols-2 gap-y-8 my-5 max-[500px]:grid-cols-1">
                                 <template x-for="(timeSlots, id) in $store.ticket.timeSlots">
                                     <div 

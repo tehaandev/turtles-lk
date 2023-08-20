@@ -13,27 +13,31 @@ document.addEventListener('alpine:init', () => {
       var nameValue = false;
       var phoneValue = false;
       var emailValue = false;
-      if (this.name.value == "") {
-        document.getElementById('name').style.borderColor = "red";
-        document.getElementById('nameInvalid').innerHTML = "Please enter your name";
+      
+      if (this.email.value == "" || this.confirmEmail.value == "" || validEmail == false || validConfirmEmail == false) {
+        document.getElementById('email').style.borderColor = "red";
+        document.getElementById('emailInvalid').innerHTML = "Please enter your email.";
+        document.getElementById('confirmEmail').style.borderColor = "red";
+        document.getElementById('emailMismatch').innerHTML = "Please enter your email.";
+        document.getElementById('email').scrollIntoView();
       } else {
-        nameValue = true
+        emailValue = true
       }
 
-      if (this.phone.value == "") {
+      if (this.phone.value == "" || phoneValid == false) {
         document.getElementById('phone').style.borderColor = "red";
-        document.getElementById('phoneInvalid').innerHTML = "Please enter your phone number";
+        document.getElementById('phoneInvalid').innerHTML = "Please enter your phone number.";
+        document.getElementById('phone').scrollIntoView();
       } else {
         phoneValue = true
       }
-      
-      if (this.email.value == "" || this.confirmEmail.value == "") {
-        document.getElementById('email').style.borderColor = "red";
-        document.getElementById('emailInvalid').innerHTML = "Please enter your email";
-        document.getElementById('confirmEmail').style.borderColor = "red";
-        document.getElementById('emailMismatch').innerHTML = "Please enter your email";
+
+      if (this.name.value == "") {
+        document.getElementById('name').style.borderColor = "red";
+        document.getElementById('nameInvalid').innerHTML = "Please enter your name.";
+        document.getElementById('name').scrollIntoView();
       } else {
-        emailValue = true
+        nameValue = true
       }
 
       if (nameValue == true && phoneValue == true && emailValue == true && validEmail == true && validConfirmEmail == true && phoneValid == true) {
@@ -42,10 +46,8 @@ document.addEventListener('alpine:init', () => {
         localStorage.setItem('gender', this.gender.value);
         window.location.href = "/tickets/payment.html";
       }
-      
+
     }
-
-
   }))
 });
 
@@ -103,7 +105,7 @@ document.getElementById('email').addEventListener('input', function () {
     validEmail = true;
   } else {
     document.getElementById('email').style.borderColor = "red";
-    document.getElementById('emailInvalid').innerHTML = "Invalid email (Ex:JohnDoe@gmail.com)";
+    document.getElementById('emailInvalid').innerHTML = "Invalid email (Ex:JohnDoe@gmail.com).";
     validEmail = false;
   }
 });
@@ -115,7 +117,7 @@ document.getElementById('confirmEmail').addEventListener('input', function () {
   if (emailLC != confirmEmailLC) {
     email.style.borderColor = "red";
     confirmEmail.style.borderColor = "red";
-    document.getElementById('emailMismatch').innerHTML = "Emails do not match";
+    document.getElementById('emailMismatch').innerHTML = "Emails do not match.";
     validConfirmEmail = false;
   } else {
     email.style.borderColor = "#E2E8F0";
@@ -131,7 +133,7 @@ document.getElementById('phone').addEventListener('input', function () {
   var phoneValtidity = phone_input.isValidNumber();
   if (phoneValtidity == false) {
     phoneInput.style.borderColor = "red";
-    document.getElementById('phoneInvalid').innerHTML = "Invalid phone number (Ex: +94771234567))";
+    document.getElementById('phoneInvalid').innerHTML = "Invalid phone number (Ex: +94771234567).";
     phoneValid = false;
   } else {
     phoneInput.style.borderColor = "#E2E8F0";

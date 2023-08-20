@@ -5,18 +5,22 @@ document.addEventListener('alpine:init', () => {
     selectedTimeTxt: (localStorage.getItem('selectedTimeTxt') || '').split(','),
     inputAvailability: false,
     inputAvailability() {
-      if (document.getElementById('card').value == "") {
+      if (document.getElementById('card').value == "" || cardValid == false) {
         document.getElementById('card').style.borderColor = "red";
         document.getElementById('cardInvalid').innerHTML = "Please enter your card number";
-      } else if (document.getElementById('expDate').value == "") {
+        document.getElementById('card').scrollIntoView();
+      } else if (document.getElementById('expDate').value == "" || expDateValid == false) {
         document.getElementById('expDate').style.borderColor = "red";
-        document.getElementById('expDateInvalid').innerHTML = "Please enter your card expiry date";
-      } else if (document.getElementById('cvv').value == "") {
+        document.getElementById('expDateInvalid').innerHTML = "Please enter your card's expiry date";
+        document.getElementById('expDate').scrollIntoView();
+      } else if (document.getElementById('cvv').value == "" || cvvValid == false) {
         document.getElementById('cvv').style.borderColor = "red";
         document.getElementById('cvvInvalid').innerHTML = "Please enter your CVV";
-      } else if (document.getElementById('nameOnCard').value == "") {
+        document.getElementById('cvv').scrollIntoView();
+      } else if (document.getElementById('nameOnCard').value == "" || nameOnCardValid == false) {
         document.getElementById('nameOnCard').style.borderColor = "red";
         document.getElementById('nameOnCardInvalid').innerHTML = "Please enter your name";
+        document.getElementById('nameOnCard').scrollIntoView();
       } else {
         document.getElementById('card').style.borderColor = "#E2E8F0";
         document.getElementById('cardInvalid').innerHTML = "";
@@ -33,11 +37,12 @@ document.addEventListener('alpine:init', () => {
 
     goToConfirmation() {
       this.inputAvailability();
-      if (this.inputAvailability == true && cardValid == true && expDateValid == true && cvvValid == true && nameOnCardValid == true) {
+      if (this.inputAvailability == true) {
         localStorage.setItem('card', document.getElementById('card').value);
         localStorage.setItem('expDate', document.getElementById('expDate').value);
         localStorage.setItem('cvv', document.getElementById('cvv').value);
         window.location.href = "/tickets/confirmation.html";
+      } else {
       }
     }
   }))
@@ -164,7 +169,7 @@ document.getElementById('cvv').addEventListener('input', function () {
   const cvv = document.getElementById('cvv').value;
   if (cvv.length != 3 || isNaN(cvv)) {
     document.getElementById('cvv').style.borderColor = "red";
-    document.getElementById('cvvInvalid').innerHTML = "Invalid CVV";
+    document.getElementById('cvvInvalid').innerHTML = "Invalid CVV (Ex. 123).";
     cvvValid = false;
   } else {
     document.getElementById('cvv').style.borderColor = "#E2E8F0";
@@ -180,7 +185,7 @@ document.getElementById('nameOnCard').addEventListener('input', function () {
   const nameOnCard = document.getElementById('nameOnCard').value;
   if (nameOnCard == "" || !isNaN(nameOnCard)) {
     document.getElementById('nameOnCard').style.borderColor = "red";
-    document.getElementById('nameOnCardInvalid').innerHTML = "Invalid name";
+    document.getElementById('nameOnCardInvalid').innerHTML = "Name must not contain numerical values (Ex. John Doe).";
     nameOnCardValid = false;
   } else {
     document.getElementById('nameOnCard').style.borderColor = "#E2E8F0";

@@ -333,3 +333,11 @@ document.addEventListener('alpine:init', () => {
     })
 
 });
+
+
+
+document.getElementById('datepicker').addEventListener('change', function () {
+    document.getElementById('datepicker').style.borderColor = "#E2E8F0";
+    document.getElementById('dateInvalid').innerHTML = "";
+});
+
