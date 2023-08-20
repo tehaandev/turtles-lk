@@ -36,7 +36,7 @@ document.addEventListener('alpine:init', () => {
         emailValue = true
       }
 
-      if (nameValue == true && phoneValue == true && emailValue == true) {
+      if (nameValue == true && phoneValue == true && emailValue == true && validEmail == true && validConfirmEmail == true && phoneValid == true) {
         localStorage.setItem('name', this.name.value);
         localStorage.setItem('email', this.email.value);
         localStorage.setItem('gender', this.gender.value);
@@ -94,18 +94,21 @@ function validateEmail(email) {
   return emailRegex.test(email);
 }
 
+validEmail = false;
 document.getElementById('email').addEventListener('input', function () {
   const userEmail = document.getElementById('email').value;
   if (validateEmail(userEmail)) {
     document.getElementById('email').style.borderColor = "#E2E8F0";
     document.getElementById('emailInvalid').innerHTML = "";
+    validEmail = true;
   } else {
     document.getElementById('email').style.borderColor = "red";
     document.getElementById('emailInvalid').innerHTML = "Invalid email (Ex:JohnDoe@gmail.com)";
+    validEmail = false;
   }
 });
 
-
+validConfirmEmail = false;
 document.getElementById('confirmEmail').addEventListener('input', function () {
   emailLC = email.value.toLowerCase();
   confirmEmailLC = confirmEmail.value.toLowerCase();
@@ -113,22 +116,28 @@ document.getElementById('confirmEmail').addEventListener('input', function () {
     email.style.borderColor = "red";
     confirmEmail.style.borderColor = "red";
     document.getElementById('emailMismatch').innerHTML = "Emails do not match";
+    validConfirmEmail = false;
   } else {
     email.style.borderColor = "#E2E8F0";
     confirmEmail.style.borderColor = "#E2E8F0";
     document.getElementById('emailMismatch').innerHTML = "";
+    validConfirmEmail = true;
   }
 });
 
+
+phoneValid = false;
 document.getElementById('phone').addEventListener('input', function () {
   var phoneValtidity = phone_input.isValidNumber();
   if (phoneValtidity == false) {
     phoneInput.style.borderColor = "red";
     document.getElementById('phoneInvalid').innerHTML = "Invalid phone number (Ex: +94771234567))";
+    phoneValid = false;
   } else {
     phoneInput.style.borderColor = "#E2E8F0";
     document.getElementById('phoneInvalid').innerHTML = "";
     localStorage.setItem('phone', phone_input.getNumber(intlTelInputUtils.numberFormat.INTERNATIONAL));
+    phoneValid = true;
   }
 });
 

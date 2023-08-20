@@ -33,7 +33,7 @@ document.addEventListener('alpine:init', () => {
 
     goToConfirmation() {
       this.inputAvailability();
-      if (this.inputAvailability == true && cardValid == true) {
+      if (this.inputAvailability == true && cardValid == true && expDateValid == true && cvvValid == true && nameOnCardValid == true) {
         localStorage.setItem('card', document.getElementById('card').value);
         localStorage.setItem('expDate', document.getElementById('expDate').value);
         localStorage.setItem('cvv', document.getElementById('cvv').value);
@@ -88,7 +88,7 @@ function formatCardNumber(cardNumber) {
   return chunks.join(' ');
 }
 
-
+expDateValid = false;
 expDate = document.getElementById('expDate');
 expDate.addEventListener("input", function (event) {
   const input = event.target;
@@ -112,18 +112,23 @@ expDate.addEventListener("input", function (event) {
   if (isNaN(expMonth) || isNaN(expYear)) {
     document.getElementById('expDate').style.borderColor = "red";
     document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date (Ex. MM/YY).";
+    expDateValid = false;
   } else if (expMonth < 1 || expMonth > 12) {
     document.getElementById('expDate').style.borderColor = "red";
     document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date (Ex. MM/YY).";
+    expDateValid = false;
   } else if (expYear < currentYearLastDigits) {
     document.getElementById('expDate').style.borderColor = "red";
     document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date (Ex. MM/YY).";
+    expDateValid = false;
   } else if (expYear == currentYearLastDigits && expMonth < currentMonth) {
     document.getElementById('expDate').style.borderColor = "red";
     document.getElementById('expDateInvalid').innerHTML = "Invalid expiry date (Ex. MM/YY).";
+    expDateValid = false;
   } else {
     document.getElementById('expDate').style.borderColor = "#E2E8F0";
     document.getElementById('expDateInvalid').innerHTML = "";
+    expDateValid = true;
   }
 });
 
@@ -154,27 +159,33 @@ function formatExpirationDate(expirationDate) {
 }
 
 // CVV validation
+cvvValid = false;
 document.getElementById('cvv').addEventListener('input', function () {
   const cvv = document.getElementById('cvv').value;
   if (cvv.length != 3 || isNaN(cvv)) {
     document.getElementById('cvv').style.borderColor = "red";
     document.getElementById('cvvInvalid').innerHTML = "Invalid CVV";
+    cvvValid = false;
   } else {
     document.getElementById('cvv').style.borderColor = "#E2E8F0";
     document.getElementById('cvvInvalid').innerHTML = "";
+    cvvValid = true;
   }
 
 });
 
 // Name on card validation
+nameOnCardValid = false;
 document.getElementById('nameOnCard').addEventListener('input', function () {
   const nameOnCard = document.getElementById('nameOnCard').value;
   if (nameOnCard == "" || !isNaN(nameOnCard)) {
     document.getElementById('nameOnCard').style.borderColor = "red";
     document.getElementById('nameOnCardInvalid').innerHTML = "Invalid name";
+    nameOnCardValid = false;
   } else {
     document.getElementById('nameOnCard').style.borderColor = "#E2E8F0";
     document.getElementById('nameOnCardInvalid').innerHTML = "";
+    nameOnCardValid = true;
   }
 });
 
