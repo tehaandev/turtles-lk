@@ -3,6 +3,7 @@ var field = document.getElementById('datepicker');
 var picker = new Pikaday({
     field: document.getElementById('datepicker'),
     summary_field: document.getElementById('summary_date'),
+    input_field: document.getElementById('datepickerValue'),
     format: 'Do-MM-YYYY',
     firstDay: 1,
     minDate: new Date(),
@@ -16,10 +17,11 @@ var picker = new Pikaday({
 
     onSelect: function (date) {
         format = 'Do MM YYYY',
-            field.value = picker.toString(date)
+        field.value = picker.toString(date)
         var selectedDate = field.value.toString(date, format)
         localStorage.setItem('selectedDate', selectedDate)
         document.getElementById('summary_date').innerHTML = selectedDate;
+        document.getElementById('datepickerValue').value = selectedDate;
     }
 });
 
