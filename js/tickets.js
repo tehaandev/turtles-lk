@@ -344,7 +344,6 @@ document.addEventListener('alpine:init', () => {
 function resetDateValidation(){
     document.getElementById('dateInvalid').innerHTML = '';
     document.getElementById('datepickerValue').style.borderColor = '#E2E8F0';
-    console.log('reset');
 }
 
  
