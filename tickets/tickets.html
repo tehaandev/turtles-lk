@@ -84,6 +84,7 @@
                         }
                         this.selectedTime.push(id);
                         this.selectedTimeTxt.push($store.ticket.timeSlots[id].time);
+                        this.resetTimeValidation();
                         this.calculate();
                     },
 

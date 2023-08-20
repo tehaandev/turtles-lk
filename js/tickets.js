@@ -30,6 +30,10 @@ var picker = new Pikaday({
 document.addEventListener('alpine:init', () => {
     Alpine.data('ticket', () => ({
 
+        resetTimeValidation(){
+            document.getElementById('timeSlotsInvalid').innerHTML = '';
+        },
+
         // Calculate method will be called when the user selects a time slot. 
         calculate() {
             adult_LK_count = parseInt(this.adult_LK_count);
@@ -342,4 +346,7 @@ function resetDateValidation(){
     document.getElementById('datepickerValue').style.borderColor = '#E2E8F0';
     console.log('reset');
 }
+
+ 
+
 
