@@ -1,9 +1,9 @@
 body {
-    background: scroll linear-gradient(#bae2ff, #EAF6FF);
+    background: scroll linear-gradient(#bae2ff, #ffffff);
     background-size: 300% 300%;
     min-height: 100vh;
     max-width: 100%;
-    animation: color 7s ease-in-out infinite;
+    animation: color 10s ease-in-out infinite;
     font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
     color: #232528;
     font-size: 1.1em;
@@ -279,6 +279,26 @@ DISPLAY WIDTH <= 1366px
         width: 100% !important;
         line-height: 65px;
         
+    }
+
+    img.grid-image {
+        width: 270px;
+        margin: 3vh 10px;
+        transition: 250ms ease-in-out;
+    }  
+    .footer {
+        margin: 3vh 8vw;
+    }
+    .footer-header, .footer-content {
+        display: block;
+    }
+    .footer-header-1{
+        display: block;
+    }
+    .footer-content-1 {
+        display: block;
+        width: 90%;
+        margin-bottom: 50px;
     }
 }
 @media (max-width: 600px){
