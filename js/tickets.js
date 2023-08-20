@@ -22,6 +22,7 @@ var picker = new Pikaday({
         localStorage.setItem('selectedDate', selectedDate)
         document.getElementById('summary_date').innerHTML = selectedDate;
         document.getElementById('datepickerValue').value = selectedDate;
+        resetDateValidation();
     }
 });
 
@@ -336,10 +337,9 @@ document.addEventListener('alpine:init', () => {
 
 });
 
-
-
-document.getElementById('datepicker').addEventListener('change', function () {
-    document.getElementById('datepicker').style.borderColor = "#E2E8F0";
-    document.getElementById('dateInvalid').innerHTML = "";
-});
+function resetDateValidation(){
+    document.getElementById('dateInvalid').innerHTML = '';
+    document.getElementById('datepickerValue').style.borderColor = '#E2E8F0';
+    console.log('reset');
+}
 
