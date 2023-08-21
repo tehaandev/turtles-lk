@@ -460,6 +460,7 @@ img.top-button:hover {
     color: #03045E;
 }
 .footer-credits a {
+    color: #03045E;
     text-decoration: none;
     transition: 200ms ease-in-out;
 }

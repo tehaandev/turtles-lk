@@ -297,14 +297,15 @@ img.top-button:hover {
     text-align: center;
     margin: 30px auto;
     font-size: 0.8em;
-    color: #03045E;
+    color: white;
 }
 .footer-credits a {
+    color: white;
     text-decoration: none;
     transition: 200ms ease-in-out;
 }
 .footer-credits a:hover {
-    color: #3195ff;
+    color: #88c1ff;
     transition: 200ms ease-in-out;
 }
 /*End Footer*/
