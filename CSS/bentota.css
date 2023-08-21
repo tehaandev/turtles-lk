@@ -292,6 +292,21 @@ img.top-button:hover {
     margin: 0 auto;
     text-align: center;
 }
+.footer-credits {
+    display: block;
+    text-align: center;
+    margin: 30px auto;
+    font-size: 0.8em;
+    color: #03045E;
+}
+.footer-credits a {
+    text-decoration: none;
+    transition: 200ms ease-in-out;
+}
+.footer-credits a:hover {
+    color: #3195ff;
+    transition: 200ms ease-in-out;
+}
 /*End Footer*/
 
 /*
